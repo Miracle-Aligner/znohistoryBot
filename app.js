@@ -165,7 +165,7 @@ const getInput = (msg) => {
                 if(msg.text.toLowerCase() === PASSWORD){ 
                     rk.emptyRow();
                     rk
-                    .addRow("Добавить e-mail")
+                    //.addRow("Добавить e-mail")
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
                     bot.removeReplyListener(replyListenerId)
@@ -210,7 +210,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk.emptyRow();
                 rk
-                .addRow("Добавить e-mail")
+                // .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
                 .addRow("Как попасть"); 
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
@@ -243,7 +243,7 @@ bot.onText(/\/code_word/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk.emptyRow();
                 rk
-                .addRow("Добавить e-mail")
+                //.addRow("Добавить e-mail")
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
