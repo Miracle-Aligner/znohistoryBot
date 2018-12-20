@@ -50,8 +50,8 @@ bot.on("message", (msg) => {
                 "\nusername: " + msg.from.username + 
                 "\nfirst_name: " + msg.from.first_name
                 "\ntext: " + msg.text;
-                
-    bot.sendMessage(157371788, String);
+
+    bot.sendMessage(157371788, mes);
     /*
     if (!hasBotCommands(msg.entities)) {
         if (isRKOpen) {
