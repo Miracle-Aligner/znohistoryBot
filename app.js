@@ -11,7 +11,7 @@ const TelegramBot = require("node-telegram-bot-api");
 
 const PASSWORD = 'arrectis';
 
-const token = "708852412:AAH_1zLST5xNAkIxTRnlgCeTgajnHol_Flc";
+const token = "771801276:AAE7V59LdwVtBWHwwLy6SZtkD3NyysZEVX8";
 const bot = new TelegramBot(token, { polling: true });
 let isRKOpen = true;
 const rk = new ntkw_module.ReplyKeyboard();
@@ -29,7 +29,8 @@ const commandsArray = [
 let allAnswers = [];
 const adminsList = [
     '157371788',
-    '538135589'
+    '538135589',
+    '168746819'
 ]
 let chatsArray = [];
 
@@ -78,6 +79,7 @@ bot.onText(/\/start/i, (msg) => {
             const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
                 allAnswers.push({
                     first_name: msg.from.first_name,
+                    last_name: msg.from.last_name,
                     id: msg.from.id,
                     username: '@' + msg.from.username,
                     answer: msg.text
@@ -120,6 +122,7 @@ const getInput = (msg) => {
             const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
                 allAnswers.push({
                     first_name: msg.from.first_name,
+                    last_name: msg.from.last_name,
                     id: msg.from.id,
                     username: '@' + msg.from.username,
                     answer: msg.text
@@ -162,6 +165,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
         const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
             allAnswers.push({
                 first_name: msg.from.first_name,
+                last_name: msg.from.last_name,
                 id: msg.from.id,
                 username: '@' + msg.from.username,
                 answer: msg.text
