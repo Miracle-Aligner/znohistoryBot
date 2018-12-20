@@ -241,7 +241,7 @@ bot.onText(/\/code_word/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.emptyRow();
+                rk.emptyRow(0);
                 rk
                 //.addRow("Добавить e-mail")
                 .addRow("О мероприятии")
