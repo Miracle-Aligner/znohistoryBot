@@ -50,12 +50,12 @@ bot.on("message", (msg) => {
     else{
         mes += "\nusername: @" + msg.from.username;
     }
-    if (msg.from.username == undefined)
+    if (msg.from.first_name == undefined)
         mes += "\nfirst_name: -";
     else{
         mes += "\nfirst_name: " + msg.from.first_name;
     }
-    if (msg.from.username == undefined)
+    if (msg.from.last_name == undefined)
         mes += "\nlast_name: -";
     else{
         mes += "\nlast_name: @" + msg.from.last_name;
@@ -311,12 +311,12 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
             else{
                 mes += "\nusername: " + answer.username;
             }
-            if (answer.username == undefined)
+            if (answer.first_name == undefined)
                 mes += "\nfirst_name: -";
             else{
                 mes += "\nfirst_name: " + answer.first_name;
             }
-            if (answer.username == undefined)
+            if (answer.last_name == undefined)
                 mes += "\nlast_name: -";
             else{
                 mes += "\nlast_name: @" + answer.last_name;
