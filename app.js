@@ -28,7 +28,8 @@ const commandsArray = [
 
 let allAnswers = [];
 const adminsList = [
-    '157371788'
+    '157371788',
+    '538135589'
 ]
 let chatsArray = [];
 
@@ -249,7 +250,7 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
         allAnswers.forEach(answer => {
             response += '\n\n';
             response += 'Пользователь: ';
-            if(answer.username != null)
+            if(answer.username != undefined)
                 response += answer.username;
             else 
                 response += answer.first_name;
