@@ -11,35 +11,20 @@ mongoose.connect('mongodb://heroku_7v0qw5zb:11loqerct4i530gt13c357pt5j@ds159112.
 let  mongoosePaginate = require('mongoose-paginate');
 
 let userSchema = new mongoose.Schema({
-    followed: [{
-        id: String,
-        username: String,
-        avatarUrl: String
-    }],
-    followers: [{
-        id: String,
-        username: String,
-        avatarUrl: String
-    }],
-    description: String,
+    chat_id: String,
+    first_name: String,
     username: String,
-    passhash: String,
+    last_name: String,
     isAdmin: Boolean,
-    avatarUrl: String,
-    twitterToken: String,
-    facebook: {
-        id: String,
-        token: String,
-        username: String
-    },
-    telegramUsername:String
+    mail: String,
+    answer: String,
 }, {collection: "Users"});
 userSchema.plugin(mongoosePaginate);
 let db = mongoose.connection;
 let Users = mongoose.model('Users', userSchema, 'Users');
 
-function getUserByLoginAndPasshash(username, hash){
-    return Users.findOne({username: username, passhash: hash})
+function getByChatId(chat_id){
+    return Users.findOne({chat_id: chat_id})
     .then (doc => {return Promise.resolve(doc)})
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
@@ -50,24 +35,6 @@ function getUserByFacebookIdAndName(id, token, username){
             return Promise.resolve(doc);
     })
     .catch (err => {console.log(err); return Promise.reject(err)});
-}
-
-function getUserByFacebookToken(token){
-    return Users.findOne({'facebook.token': token})
-    .then (doc => {
-            return Promise.resolve(doc);
-    })
-    .catch (err => {console.log(err); return Promise.reject(err)});
-}
-
-function getById(id) {
-    return Users.findOne( { '_id': new mongoose.Types.ObjectId(id)})
-        .then (data => {
-            return new Promise (function (resolve, reject) {
-                resolve(data);
-            });
-    })
-    .catch(err => {console.log(err); return Promise.reject(err)});
 }
 
 function checkNull (users){

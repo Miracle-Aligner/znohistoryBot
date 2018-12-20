@@ -124,7 +124,7 @@ bot.onText(/\/start/i, (msg) => {
                     rk
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
-                    bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
+                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильно слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                     chatsArray.push(msg.from.id);
                 }
                     
@@ -148,7 +148,7 @@ const waitForPassword = async (msg) => {
 const getInput = (msg) => {
 
     return new Promise((resolve, reject) => {
-        bot.sendMessage(msg.from.id, 'Попробуйте ещё раз:', {
+        bot.sendMessage(msg.from.id, 'Хмм, подумай еще. Проверь орфографию и регистр букв, а затем попробуй еще раз.', {
             reply_markup: {
                 force_reply: true
             }
@@ -167,7 +167,7 @@ const getInput = (msg) => {
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
                     bot.removeReplyListener(replyListenerId)
-                    bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
+                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильно слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                     chatsArray.push(msg.from.id);
                     reject(`done`);
                 } 
@@ -211,7 +211,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
                 .addRow("Как попасть"); 
-                bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
+                bot.sendMessage(msg.from.id, "Поздравляю! Это правильно слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                 chatsArray.push(msg.from.id);
             }
                 
@@ -244,7 +244,7 @@ bot.onText(/\/code_word/i, (msg) => {
                 .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
-                bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
+                bot.sendMessage(msg.from.id, "Поздравляю! Это правильно слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                 chatsArray.push(msg.from.id);
             }
                 
@@ -268,12 +268,12 @@ bot.onText(/\/about/i, (msg) => {
 });
 
 bot.onText(/Как попасть/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 800грн.\nПриветствуется дресс-код.\n\nBallroom pack - backstage vip\nСтоимость: 1200грн.\nПриветствуется дресс-код.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nРовно одна тысяча пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
+    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nРовно одна тысяча пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
     bot.sendMessage(msg.from.id, info);
 });
 
 bot.onText(/\/how/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 800грн.\nПриветствуется дресс-код.\n\nBallroom pack - backstage vip\nСтоимость: 1200грн.\nПриветствуется дресс-код.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nРовно одна тысяча пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
+    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nРовно одна тысяча пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
     bot.sendMessage(msg.from.id, info);
 });
 
