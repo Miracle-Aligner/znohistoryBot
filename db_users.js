@@ -50,7 +50,7 @@ function add (user){
     return new Promise(function (resolve, reject) {
         db.collection('Users').insert(user, (err, data) => {
             if (err) reject("cannnot insert into db");
-            else resolve(user2Add);
+            else resolve(user);
         });
     });
 }
