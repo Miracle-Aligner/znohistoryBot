@@ -164,6 +164,7 @@ const getInput = (msg) => {
                 if(msg.text.toLowerCase() === PASSWORD){ 
                     rk.popRow(0);
                     rk
+                    .addRow("Добавить e-mail")
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
                     bot.removeReplyListener(replyListenerId)
@@ -268,12 +269,12 @@ bot.onText(/\/about/i, (msg) => {
 });
 
 bot.onText(/Как попасть/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код.Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nПятсот пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
+    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\n500 пригласительных. \n\nДетали тут: https://www.technoball.com.ua/";
     bot.sendMessage(msg.from.id, info);
 });
 
 bot.onText(/\/how/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код.Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\nПятсот пригласительных. \n\nКупить тут: https://www.technoball.com.ua/";
+    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\n500 пригласительных. \n\nДетали тут: https://www.technoball.com.ua/";
     bot.sendMessage(msg.from.id, info);
 });
 
