@@ -10,7 +10,7 @@ const token = "771801276:AAE7V59LdwVtBWHwwLy6SZtkD3NyysZEVX8";
 const bot = new TelegramBot(token, { polling: true });
 let isRKOpen = true;
 let rk = new ntkw_module.ReplyKeyboard();
-const admin_rk = new ntkw_module.ReplyKeyboard();
+let admin_rk = new ntkw_module.ReplyKeyboard();
 const ik = new ntkw_module.InlineKeyboard();
 const commandsArray = [
     'Добавить e-mail',
@@ -44,11 +44,23 @@ ik
 
 bot.on("message", (msg) => {
     console.log(msg);
-    let mes = "id: " + msg.from.id + 
-                "\nusername: @" + msg.from.username + 
-                "\nfirst_name: " + msg.from.first_name +
-                "\nlast_name: " + msg.from.last_name +
-                "\ntext: " + msg.text;
+    let mes = "id: " + msg.from.id;
+    if (msg.from.username === undefined)
+        mes += "\nusername: -";
+    else{
+        mes += "\nusername: @" + msg.from.username;
+    }
+    if (msg.from.username === undefined)
+        mes += "\nfirst_name: -";
+    else{
+        mes += "\nfirst_name: " + msg.from.first_name;
+    }
+    if (msg.from.username === undefined)
+        mes += "\nlast_name: -";
+    else{
+        mes += "\nlast_name: @" + msg.from.last_name;
+    }
+    mes += "\ntext: " + msg.text;
 
     bot.sendMessage(157371788, mes);
     /*
@@ -292,10 +304,21 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
         allAnswers.forEach(answer => {
             response += '\n\n';
             response += 'Пользователь: ';
-            if(answer.username != undefined)
-                response += answer.username;
-            else 
-                response += answer.first_name;
+            if (answer.username === "@undefined")
+                mes += "\nusername: -";
+            else{
+                mes += "\nusername: " + answer.username;
+            }
+            if (answer.username === undefined)
+                mes += "\nfirst_name: -";
+            else{
+                mes += "\nfirst_name: " + answer.first_name;
+            }
+            if (answer.username === undefined)
+                mes += "\nlast_name: -";
+            else{
+                mes += "\nlast_name: @" + answer.last_name;
+            }
             response += '\nОтвет: ';
             response += answer.answer;
         });
