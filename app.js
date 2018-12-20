@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ntkw_module = require("node-telegram-keyboard-wrapper");
 const TelegramBot = require("node-telegram-bot-api");
-const Users = require("/db_users.js");
+const Users = require("./db_users.js");
 
 const PASSWORD = 'arrectis';
 
