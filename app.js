@@ -45,17 +45,17 @@ ik
 bot.on("message", (msg) => {
     console.log(msg);
     let mes = "id: " + msg.from.id;
-    if (msg.from.username === undefined)
+    if (msg.from.username == undefined)
         mes += "\nusername: -";
     else{
         mes += "\nusername: @" + msg.from.username;
     }
-    if (msg.from.username === undefined)
+    if (msg.from.username == undefined)
         mes += "\nfirst_name: -";
     else{
         mes += "\nfirst_name: " + msg.from.first_name;
     }
-    if (msg.from.username === undefined)
+    if (msg.from.username == undefined)
         mes += "\nlast_name: -";
     else{
         mes += "\nlast_name: @" + msg.from.last_name;
@@ -311,12 +311,12 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
             else{
                 mes += "\nusername: " + answer.username;
             }
-            if (answer.username === undefined)
+            if (answer.username == undefined)
                 mes += "\nfirst_name: -";
             else{
                 mes += "\nfirst_name: " + answer.first_name;
             }
-            if (answer.username === undefined)
+            if (answer.username == undefined)
                 mes += "\nlast_name: -";
             else{
                 mes += "\nlast_name: @" + answer.last_name;
