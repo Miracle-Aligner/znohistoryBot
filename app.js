@@ -61,7 +61,7 @@ bot.on("message", (msg) => {
         }
     }*/
 });
-
+/*
 bot.onText(/Добавить e-mail/i, (msg) => {
     bot.sendMessage(msg.from.id, 'Введи e-mail:', {
         reply_markup: {
@@ -99,7 +99,7 @@ Array.prototype.findByValueOfObject = function(key, value) {
       return (item[key] === value);
     });
   }
-
+*/
 bot.onText(/\/start/i, (msg) => {
     if(adminsList.includes(String(msg.from.id))){
         bot.sendMessage(msg.from.id, "Добро пожаловать, " + msg.from.first_name + "!", admin_rk.open({ resize_keyboard: true }));
