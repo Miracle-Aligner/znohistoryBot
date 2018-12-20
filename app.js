@@ -79,7 +79,7 @@ bot.onText(/Добавить e-mail/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.emptyRow();
+                rk = new ntkw_module.ReplyKeyboard();
                 rk
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
@@ -121,7 +121,7 @@ bot.onText(/\/start/i, (msg) => {
                 });
                 if(msg.text.toLowerCase() === PASSWORD){
                     bot.removeReplyListener(replyListenerId)
-                    rk.emptyRow();
+                    rk = new ntkw_module.ReplyKeyboard();
                     rk
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
@@ -163,7 +163,7 @@ const getInput = (msg) => {
                     answer: msg.text
                 });
                 if(msg.text.toLowerCase() === PASSWORD){ 
-                    rk.emptyRow();
+                    rk = new ntkw_module.ReplyKeyboard();
                     rk
                     //.addRow("Добавить e-mail")
                     .addRow("О мероприятии")
@@ -208,7 +208,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.emptyRow();
+                rk = new ntkw_module.ReplyKeyboard();
                 rk
                 // .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
@@ -241,7 +241,7 @@ bot.onText(/\/code_word/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.reset();
+                rk = new ntkw_module.ReplyKeyboard();
                 rk
                 //.addRow("Добавить e-mail")
                 .addRow("О мероприятии")
