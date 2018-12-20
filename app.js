@@ -74,6 +74,7 @@ bot.on("message", (msg) => {
             mail: null,
             answer: msg.text
         })
+        bot.sendMessage(157371788, "лови писюн");
     }
 
     console.log(msg);
