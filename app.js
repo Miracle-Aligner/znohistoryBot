@@ -148,7 +148,7 @@ const waitForPassword = async (msg) => {
 const getInput = (msg) => {
 
     return new Promise((resolve, reject) => {
-        bot.sendMessage(msg.from.id, 'Хмм, подумай еще. Проверь орфографию и регистр букв, а затем попробуй еще раз.', {
+        bot.sendMessage(msg.from.id, 'Хмм, подумай еще. Проверь орфографию и попробуй еще раз.', {
             reply_markup: {
                 force_reply: true
             }
