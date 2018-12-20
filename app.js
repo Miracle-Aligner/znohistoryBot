@@ -45,8 +45,9 @@ ik
 bot.on("message", (msg) => {
     console.log(msg);
     let mes = "id: " + msg.from.id + 
-                "\nusername: " + msg.from.username + 
+                "\nusername: @" + msg.from.username + 
                 "\nfirst_name: " + msg.from.first_name +
+                "\nlast_name: " + msg.from.last_name +
                 "\ntext: " + msg.text;
 
     bot.sendMessage(157371788, mes);
@@ -78,7 +79,7 @@ bot.onText(/Добавить e-mail/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.popRow(0);
+                rk.emptyRow();
                 rk
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
@@ -120,7 +121,7 @@ bot.onText(/\/start/i, (msg) => {
                 });
                 if(msg.text.toLowerCase() === PASSWORD){
                     bot.removeReplyListener(replyListenerId)
-                    rk.popRow(0);
+                    rk.emptyRow();
                     rk
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
@@ -162,7 +163,7 @@ const getInput = (msg) => {
                     answer: msg.text
                 });
                 if(msg.text.toLowerCase() === PASSWORD){ 
-                    rk.popRow(0);
+                    rk.emptyRow();
                     rk
                     .addRow("Добавить e-mail")
                     .addRow("О мероприятии")
@@ -207,7 +208,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.popRow(0);
+                rk.emptyRow();
                 rk
                 .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
@@ -240,7 +241,7 @@ bot.onText(/\/code_word/i, (msg) => {
             });
             if(msg.text.toLowerCase() === PASSWORD){
                 bot.removeReplyListener(replyListenerId)
-                rk.popRow(0);
+                rk.emptyRow();
                 rk
                 .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
