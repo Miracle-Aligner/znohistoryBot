@@ -70,7 +70,7 @@ bot.on("message", (msg) => {
             first_name: msg.from.first_name,
             username: msg.from.username,
             last_name: msg.from.last_name,
-            isAdmin: adminsList.includes(msg.from.id),
+            isAdmin: adminsList.includes(String(msg.from.id)),
             mail: null,
             answer: msg.text
         })
