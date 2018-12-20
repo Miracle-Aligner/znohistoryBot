@@ -46,7 +46,12 @@ ik
 
 bot.on("message", (msg) => {
     console.log(msg);
-    bot.sendMessage(157371788, String(msg));
+    let mes = "id: " + msg.from.id + "\nname" + 
+                "\nusername: " + msg.from.username + 
+                "\nfirst_name: " + msg.from.first_name
+                "\ntext: " + msg.text;
+                
+    bot.sendMessage(157371788, String);
     /*
     if (!hasBotCommands(msg.entities)) {
         if (isRKOpen) {
