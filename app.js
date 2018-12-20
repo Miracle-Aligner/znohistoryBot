@@ -307,19 +307,19 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
             response += '\n\n';
             response += 'Пользователь: ';
             if (answer.username === "@undefined")
-                mes += "\nusername: -";
+                response += "\nusername: -";
             else{
-                mes += "\nusername: " + answer.username;
+                response += "\nusername: " + answer.username;
             }
             if (answer.first_name == undefined)
-                mes += "\nfirst_name: -";
+                response += "\nfirst_name: -";
             else{
-                mes += "\nfirst_name: " + answer.first_name;
+                response += "\nfirst_name: " + answer.first_name;
             }
             if (answer.last_name == undefined)
-                mes += "\nlast_name: -";
+                response += "\nlast_name: -";
             else{
-                mes += "\nlast_name: @" + answer.last_name;
+                response += "\nlast_name: @" + answer.last_name;
             }
             response += '\nОтвет: ';
             response += answer.answer;
