@@ -11,10 +11,6 @@ const TelegramBot = require("node-telegram-bot-api");
 
 const PASSWORD = 'arrectis';
 
-if (process.argv.length < 3) {
-    throw new Error("To test this bot, please pass a bot-token to the application.");
-}
-
 const token = "708852412:AAH_1zLST5xNAkIxTRnlgCeTgajnHol_Flc";
 const bot = new TelegramBot(token, { polling: true });
 let isRKOpen = true;
