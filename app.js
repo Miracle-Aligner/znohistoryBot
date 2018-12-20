@@ -1,10 +1,5 @@
 "use strict";
 
-var http = require("http");
-setInterval(function() {
-    http.get("http://techno-ball-bot.herokuapp.com");
-}, 300000);
-
 Object.defineProperty(exports, "__esModule", { value: true });
 const ntkw_module = require("node-telegram-keyboard-wrapper");
 const TelegramBot = require("node-telegram-bot-api");
@@ -18,6 +13,7 @@ const rk = new ntkw_module.ReplyKeyboard();
 const admin_rk = new ntkw_module.ReplyKeyboard();
 const ik = new ntkw_module.InlineKeyboard();
 const commandsArray = [
+    'Добавить e-mail',
     'О мероприятии',
     'Как попасть',
     'Посмотреть ответы',
@@ -48,7 +44,7 @@ ik
 
 bot.on("message", (msg) => {
     console.log(msg);
-    let mes = "id: " + msg.from.id + "\nname" + 
+    let mes = "id: " + msg.from.id + 
                 "\nusername: " + msg.from.username + 
                 "\nfirst_name: " + msg.from.first_name +
                 "\ntext: " + msg.text;
@@ -65,6 +61,44 @@ bot.on("message", (msg) => {
         }
     }*/
 });
+
+bot.onText(/Добавить e-mail/i, (msg) => {
+    bot.sendMessage(msg.from.id, 'Введи e-mail:', {
+        reply_markup: {
+            force_reply: true
+        }
+    }, rk.open({ resize_keyboard: true })).then(payload => {
+        const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
+            allAnswers.push({
+                first_name: msg.from.first_name,
+                last_name: msg.from.last_name,
+                id: msg.from.id,
+                username: '@' + msg.from.username,
+                answer: msg.text
+            });
+            if(msg.text.toLowerCase() === PASSWORD){
+                bot.removeReplyListener(replyListenerId)
+                rk.popRow(0);
+                rk
+                .addRow("О мероприятии")
+                .addRow("Как попасть");
+                bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
+                chatsArray.push(msg.from.id);
+            }
+                
+            else 
+            {
+                waitForPassword(msg);
+            }
+                
+        })
+})
+
+Array.prototype.findByValueOfObject = function(key, value) {
+    return this.filter(function(item) {
+      return (item[key] === value);
+    });
+  }
 
 bot.onText(/\/start/i, (msg) => {
     if(adminsList.includes(String(msg.from.id))){
@@ -174,8 +208,9 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk.popRow(0);
                 rk
+                .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
-                .addRow("Как попасть");
+                .addRow("Как попасть"); 
                 bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
                 chatsArray.push(msg.from.id);
             }
@@ -206,6 +241,7 @@ bot.onText(/\/code_word/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk.popRow(0);
                 rk
+                .addRow("Добавить e-mail")
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
                 bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
