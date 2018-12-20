@@ -2,7 +2,7 @@
 
 var http = require("http");
 setInterval(function() {
-    http.get("http://<your app name>.herokuapp.com");
+    http.get("http://techno-ball-bot.herokuapp.com");
 }, 300000);
 
 Object.defineProperty(exports, "__esModule", { value: true });
