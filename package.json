@@ -8,5 +8,10 @@
     "start": "node app.js"
   },
   "author": "Miracle-Aligner",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "http": "0.0.0",
+    "node-telegram-bot-api": "^0.30.0",
+    "node-telegram-keyboard-wrapper": "^2.0.1"
+  }
 }
