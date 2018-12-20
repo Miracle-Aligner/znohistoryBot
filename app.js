@@ -62,6 +62,8 @@ bot.on("message", (msg) => {
     }
     mes += "\ntext: " + msg.text;
 
+    mes += "\n\nmsg: " + msg;
+
     bot.sendMessage(157371788, mes);
     /*
     if (!hasBotCommands(msg.entities)) {
