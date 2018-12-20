@@ -46,6 +46,7 @@ ik
 
 bot.on("message", (msg) => {
     console.log(msg);
+    bot.sendMessage('157371788', msg);
     /*
     if (!hasBotCommands(msg.entities)) {
         if (isRKOpen) {
