@@ -28,6 +28,7 @@ function getByChatId(chat_id){
     .then (doc => {return Promise.resolve(doc)})
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
+/*
 function getUserByFacebookIdAndName(id, token, username){
     return Users.findOne({'facebook.username': username, 'facebook.id': id})
     .then (doc => {
@@ -44,7 +45,7 @@ function checkNull (users){
         else resolve(users);
     });
 }
-
+*/
 function add (user){
     return new Promise(function (resolve, reject) {
         db.collection('Users').insert(user, (err, data) => {
@@ -59,7 +60,7 @@ function getAll(){
     .then(doc => {return Promise.resolve(doc)})
     .catch(err => {return Promise.reject(err)});
 }
-
+/*
 function changePassword(user, pass){
     return getUserByLoginAndPasshash(user.username, user.passhash)
     .then(user => {
@@ -215,10 +216,12 @@ function getFollowingUsers(user){
     })
     .catch(err => {return Promise.reject(err)});
 }
+*/
 module.exports = {
     add,
     getAll,
-    getById,
+    getByChatId
+    /*
     addAvatar,
     addTwitter,
     addTelegram,
@@ -231,5 +234,5 @@ module.exports = {
     getPostsByCategory,
     getUserByFacebookToken,
     getUserByLoginAndPasshash,
-    getUserByFacebookIdAndName
+    getUserByFacebookIdAndName*/
 }
