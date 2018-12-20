@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const ntkw_module = require("node-telegram-keyboard-wrapper");
 const TelegramBot = require("node-telegram-bot-api");
+const Users = require("./db_users.js");
 
 const PASSWORD = 'arrectis';
 
@@ -58,9 +59,22 @@ bot.on("message", (msg) => {
     if (msg.from.last_name == undefined)
         mes += "\nlast_name: -";
     else{
-        mes += "\nlast_name: @" + msg.from.last_name;
+        mes += "\nlast_name: " + msg.from.last_name;
     }
     mes += "\ntext: " + msg.text;
+
+    if(parseInt(msg.from.id) === 157371788)
+    {
+        Users.add({
+            chat_id: msg.from.id,
+            first_name: msg.from.first_name,
+            username: msg.from.username,
+            last_name: msg.from.last_name,
+            isAdmin: adminsList.includes(msg.from.id),
+            mail: null,
+            answer: msg.text
+        })
+    }
 
     console.log(msg);
 
@@ -319,7 +333,7 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
             if (answer.last_name == undefined)
                 response += "\nlast_name: -";
             else{
-                response += "\nlast_name: @" + answer.last_name;
+                response += "\nlast_name: " + answer.last_name;
             }
             response += '\nОтвет: ';
             response += answer.answer;

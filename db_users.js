@@ -5,7 +5,7 @@
 let fs = require('fs-promise');
 let mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://heroku_7v0qw5zb:11loqerct4i530gt13c357pt5j@ds159112.mlab.com:59112/heroku_7v0qw5zb', {useMongoClient: true});
+mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds157422.mlab.com:57422/technoball_bot', {useMongoClient: true});
 
 // mongoose.connect('mongodb://localhost:27017/chamber', {useMongoClient: true});
 let  mongoosePaginate = require('mongoose-paginate');
@@ -28,7 +28,6 @@ function getByChatId(chat_id){
     .then (doc => {return Promise.resolve(doc)})
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
-
 function getUserByFacebookIdAndName(id, token, username){
     return Users.findOne({'facebook.username': username, 'facebook.id': id})
     .then (doc => {
@@ -48,38 +47,11 @@ function checkNull (users){
 
 function add (user){
     return new Promise(function (resolve, reject) {
-        Users.find( {'username': user.username})
-            .then (data => {
-                checkNull(data)
-                .then(() => {
-                    let user2Add = {
-                        followed: [{
-                            id: null,
-                            username: null,
-                            avatarUrl: null
-                        }],
-                        followers: [{
-                            id: null,
-                            username: null,
-                            avatarUrl: null
-                        }],
-                        telegramUsername: null,
-                        username: user.username,
-                        passhash: user.passwordHash,
-                        isAdmin: user.isAdmin,
-                        avatarUrl: "http://res.cloudinary.com/hvldskieo/image/upload/v1513981574/no-avatar_rlbpwd.png",
-                        facebook: {id: null, token: null, username: null},
-                        twitterToken: null
-                    };
-                    db.collection('Users').insert(user2Add, (err, data) => {
-                        if (err) reject("cannnot insert into db");
-                        else resolve(user2Add);
-                    });
-                })
-                .catch (err => reject(err));                 
-        })
-        .catch(err => reject(err));   
-	}); 
+        db.collection('Users').insert(user, (err, data) => {
+            if (err) reject("cannnot insert into db");
+            else resolve(user2Add);
+        });
+    });
 }
 
 function getAll(){

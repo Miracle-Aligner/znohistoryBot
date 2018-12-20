@@ -10,7 +10,10 @@
   "author": "Miracle-Aligner",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.3",
+    "fs-promise": "^2.0.3",
     "http": "0.0.0",
+    "mongoose": "^5.4.0",
     "node-telegram-bot-api": "^0.30.0",
     "node-telegram-keyboard-wrapper": "^2.0.1"
   }
