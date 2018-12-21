@@ -370,8 +370,9 @@ bot.on("callback_query", (query) => {
             })
             if(query.data === 'send'){
                 chatsArr.forEach(entity => {
+                    bot.sendMessage(157371788, String(entity));
                     bot.sendMessage(entity, query.message.text);
-                        bot.sendMessage(157371788, String(entity));
+                    
                 });
                 admin_rk = new ntkw_module.ReplyKeyboard();
                 admin_rk
