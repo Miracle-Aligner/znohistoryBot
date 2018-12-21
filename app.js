@@ -364,8 +364,8 @@ bot.on("callback_query", (query) => {
             Users.getAllPassed().then(db_entities => {
                 let chatsArr = [];
                 db_entities.forEach(entity => {
-                    if(!chatsArr.includes(entity.id)){
-                        chatsArr.push(entity.id);
+                    if(!chatsArr.includes(entity.chat_id)){
+                        chatsArr.push(entity.chat_id);
                     }
             })
             if(query.data === 'send'){
