@@ -298,7 +298,16 @@ bot.onText(/\/how/i, (msg) => {
 });
 
 bot.onText(/Статистика/i, (msg) => {
-
+    Users.getAll()
+    .then(data => {
+        let allUsers = data;
+        Users.getAllPassed()
+        .then(allPassed => {
+            let about = "Правильных ответов: " + allPassed.length + 
+                "\n Всего ответов: " + allUsers.length;
+            bot.sendMessage(msg.from.id, about);
+        });
+    });
     let about = "Правильных ответов: " + Users.getAllPassed().length + 
                 "\n Всего ответов: " + Users.getAll().length;
     bot.sendMessage(msg.from.id, about);
@@ -307,7 +316,6 @@ bot.onText(/Статистика/i, (msg) => {
 bot.onText(/Посмотреть ответы/i, (msg) => {
     let response = "Ответы ✅";
     Users.getAll().then(db_entities => {
-        bot.sendMessage(157371788, "penis " + db_entities);
         if (db_entities.length === 0)
             bot.sendMessage(msg.from.id, "Ответы отсутствуют.");
         else{
