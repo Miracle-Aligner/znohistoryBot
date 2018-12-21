@@ -365,13 +365,20 @@ bot.on("callback_query", (query) => {
                 let chatsArr = [];
             db_entities.forEach(entity => {
                 if(!chatsArr.includes(entity.id)){
-                    chatsArr.add(entity.id);
+                    chatsArr.push(entity.id);
                 }
             })
             if(query.data === 'send'){
                 chatsArr.forEach(entity => {
                     bot.sendMessage(entity, query.message.text);
                 });
+                admin_rk = new ntkw_module.ReplyKeyboard();
+                admin_rk
+                .addRow("Посмотреть ответы")
+                .addRow("Статистика")
+                .addRow("Написать пользователям")
+                .addRow("О мероприятии")
+                .addRow("Как попасть");
                 bot.sendMessage(query.from.id, 'Отправка выполнена.', admin_rk.open());
             }
             else if(query.data === 'decline'){
