@@ -58,13 +58,13 @@ function add (user){
 }
 
 function getAll(){
-    return Users.find({})
+    return Users.find()
     .then(doc => {return Promise.resolve(doc)})
     .catch(err => {return Promise.reject(err)});
 }
 
 function getAllPassed(){
-    return Users.find({answer:"arrectis"})
+    return Users.find({"answer":"arrectis"})
     .then(doc => {return Promise.resolve(doc)})
     .catch(err => {return Promise.reject(err)});
 }
