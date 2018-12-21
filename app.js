@@ -370,7 +370,6 @@ bot.on("callback_query", (query) => {
             })
             if(query.data === 'send'){
                 chatsArr.forEach(entity => {
-                    bot.sendMessage(157371788, String(entity));
                     bot.sendMessage(entity, query.message.text);
                     
                 });
