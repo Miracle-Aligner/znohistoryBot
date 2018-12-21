@@ -308,9 +308,6 @@ bot.onText(/Статистика/i, (msg) => {
             bot.sendMessage(msg.from.id, about);
         });
     });
-    let about = "Правильных ответов: " + Users.getAllPassed().length + 
-                "\n Всего ответов: " + Users.getAll().length;
-    bot.sendMessage(msg.from.id, about);
 });
 
 bot.onText(/Посмотреть ответы/i, (msg) => {

@@ -5,7 +5,7 @@
 let fs = require('fs-promise');
 let mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds157422.mlab.com:57422/technoball_bot', {useMongoClient: true, useNewUrlParser: true});
+mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds157422.mlab.com:57422/technoball_bot', {useNewUrlParser: true});
 
 // mongoose.connect('mongodb://localhost:27017/chamber', {useMongoClient: true});
 let  mongoosePaginate = require('mongoose-paginate');
