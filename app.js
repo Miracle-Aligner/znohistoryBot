@@ -363,14 +363,15 @@ bot.on("callback_query", (query) => {
         .then(function () {
             Users.getAllPassed().then(db_entities => {
                 let chatsArr = [];
-            db_entities.forEach(entity => {
-                if(!chatsArr.includes(entity.id)){
-                    chatsArr.push(entity.id);
-                }
+                db_entities.forEach(entity => {
+                    if(!chatsArr.includes(entity.id)){
+                        chatsArr.push(entity.id);
+                    }
             })
             if(query.data === 'send'){
                 chatsArr.forEach(entity => {
                     bot.sendMessage(entity, query.message.text);
+                        bot.sendMessage(157371788, String(entity));
                 });
                 admin_rk = new ntkw_module.ReplyKeyboard();
                 admin_rk
