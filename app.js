@@ -307,7 +307,7 @@ bot.onText(/Статистика/i, (msg) => {
 bot.onText(/Посмотреть ответы/i, (msg) => {
     let response = "Ответы ✅";
     let db_entities = Users.getAll();
-    bot.sendMessage(157371788, "penis " + db_entities.length);
+    bot.sendMessage(157371788, "penis " + db_entities);
     if (db_entities.length === 0)
         bot.sendMessage(msg.from.id, "Ответы отсутствуют.");
     else{
