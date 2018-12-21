@@ -322,7 +322,7 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
                 if (answer.username == null)
                     response += "\nusername: -";
                 else{
-                    response += "\nusername: " + answer.username;
+                    response += "\nusername: @" + answer.username;
                 }
                 if (answer.first_name == null)
                     response += "\nfirst_name: -";
@@ -361,8 +361,8 @@ bot.onText(/Написать пользователям/i, (msg) => {
 bot.on("callback_query", (query) => {
     bot.answerCallbackQuery(query.id, { text: "Action received!" })
         .then(function () {
-            let db_entities = Users.getAllPassed();
-            let chatsArr = [];
+            Users.getAllPassed().then(db_entities => {
+                let chatsArr = [];
             db_entities.forEach(entity => {
                 if(!chatsArr.includes(entity.id)){
                     chatsArr.add(entity.id);
@@ -377,7 +377,8 @@ bot.on("callback_query", (query) => {
             else if(query.data === 'decline'){
                 bot.sendMessage(query.from.id, 'Отправка отменена.', admin_rk.open());
             }
-            
+            })
+                       
     });
 });
 
