@@ -306,34 +306,38 @@ bot.onText(/Статистика/i, (msg) => {
 
 bot.onText(/Посмотреть ответы/i, (msg) => {
     let response = "Ответы ✅";
-    let db_entities = Users.getAll();
-    bot.sendMessage(157371788, "penis " + db_entities);
-    if (db_entities.length === 0)
+    Users.getAll().then(db_entities => {
+        bot.sendMessage(157371788, "penis " + db_entities);
+        if (db_entities.length === 0)
+            bot.sendMessage(msg.from.id, "Ответы отсутствуют.");
+        else{
+            db_entities.forEach(answer => {
+                response += '\n\n';
+                response += 'Пользователь: ';
+                if (answer.username == null)
+                    response += "\nusername: -";
+                else{
+                    response += "\nusername: " + answer.username;
+                }
+                if (answer.first_name == null)
+                    response += "\nfirst_name: -";
+                else{
+                    response += "\nfirst_name: " + answer.first_name;
+                }
+                if (answer.last_name == null)
+                    response += "\nlast_name: -";
+                else{
+                    response += "\nlast_name: " + answer.last_name;
+                }
+                response += '\nОтвет: ';
+                response += answer.answer;
+            });
+            bot.sendMessage(msg.from.id, response);
+        }
+    })
+    .catch(err => {
         bot.sendMessage(msg.from.id, "Ответы отсутствуют.");
-    else{
-        db_entities.forEach(answer => {
-            response += '\n\n';
-            response += 'Пользователь: ';
-            if (answer.username == null)
-                response += "\nusername: -";
-            else{
-                response += "\nusername: " + answer.username;
-            }
-            if (answer.first_name == null)
-                response += "\nfirst_name: -";
-            else{
-                response += "\nfirst_name: " + answer.first_name;
-            }
-            if (answer.last_name == null)
-                response += "\nlast_name: -";
-            else{
-                response += "\nlast_name: " + answer.last_name;
-            }
-            response += '\nОтвет: ';
-            response += answer.answer;
-        });
-        bot.sendMessage(msg.from.id, response);
-    }
+    })
 });
 
 bot.onText(/Написать пользователям/i, (msg) => {
