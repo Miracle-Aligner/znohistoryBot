@@ -23,13 +23,11 @@ const commandsArray = [
     '/start'
 ];
 
-let allAnswers = [];
 const adminsList = [
     '157371788',
     '538135589',
     '168746819'
-]
-let chatsArray = [];
+];
 
 rk
     .addRow("Ввести кодовое слово");
@@ -62,20 +60,6 @@ bot.on("message", (msg) => {
         mes += "\nlast_name: " + msg.from.last_name;
     }
     mes += "\ntext: " + msg.text;
-
-    if(parseInt(msg.from.id) === 157371788)
-    {
-        Users.add({
-            chat_id: msg.from.id,
-            first_name: msg.from.first_name,
-            username: msg.from.username,
-            last_name: msg.from.last_name,
-            isAdmin: adminsList.includes(String(msg.from.id)),
-            mail: null,
-            answer: msg.text
-        })
-        bot.sendMessage(157371788, "лови писюн");
-    }
 
     console.log(msg);
 
@@ -141,11 +125,13 @@ bot.onText(/\/start/i, (msg) => {
             }
         }, rk.open({ resize_keyboard: true })).then(payload => {
             const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
-                allAnswers.push({
+                Users.add({
+                    chat_id: msg.from.id,
                     first_name: msg.from.first_name,
+                    username: msg.from.username,
                     last_name: msg.from.last_name,
-                    id: msg.from.id,
-                    username: '@' + msg.from.username,
+                    isAdmin: adminsList.includes(String(msg.from.id)),
+                    mail: null,
                     answer: msg.text
                 });
                 if(msg.text.toLowerCase() === PASSWORD){
@@ -155,7 +141,6 @@ bot.onText(/\/start/i, (msg) => {
                     .addRow("О мероприятии")
                     .addRow("Как попасть");
                     bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
-                    chatsArray.push(msg.from.id);
                 }
                     
                 else 
@@ -184,11 +169,13 @@ const getInput = (msg) => {
             }
         }).then(payload => {
             const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
-                allAnswers.push({
+                Users.add({
+                    chat_id: msg.from.id,
                     first_name: msg.from.first_name,
+                    username: msg.from.username,
                     last_name: msg.from.last_name,
-                    id: msg.from.id,
-                    username: '@' + msg.from.username,
+                    isAdmin: adminsList.includes(String(msg.from.id)),
+                    mail: null,
                     answer: msg.text
                 });
                 if(msg.text.toLowerCase() === PASSWORD){ 
@@ -199,7 +186,6 @@ const getInput = (msg) => {
                     .addRow("Как попасть");
                     bot.removeReplyListener(replyListenerId)
                     bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
-                    chatsArray.push(msg.from.id);
                     reject(`done`);
                 } 
                 setTimeout(() => {
@@ -228,11 +214,13 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
         }
     }, rk.open({ resize_keyboard: true })).then(payload => {
         const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
-            allAnswers.push({
+            Users.add({
+                chat_id: msg.from.id,
                 first_name: msg.from.first_name,
+                username: msg.from.username,
                 last_name: msg.from.last_name,
-                id: msg.from.id,
-                username: '@' + msg.from.username,
+                isAdmin: adminsList.includes(String(msg.from.id)),
+                mail: null,
                 answer: msg.text
             });
             if(msg.text.toLowerCase() === PASSWORD){
@@ -243,7 +231,6 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 .addRow("О мероприятии")
                 .addRow("Как попасть"); 
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
-                chatsArray.push(msg.from.id);
             }
                 
             else 
@@ -262,10 +249,13 @@ bot.onText(/\/code_word/i, (msg) => {
         }
     }, rk.open({ resize_keyboard: true })).then(payload => {
         const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
-            allAnswers.push({
+            Users.add({
+                chat_id: msg.from.id,
                 first_name: msg.from.first_name,
-                id: msg.from.id,
-                username: '@' + msg.from.username,
+                username: msg.from.username,
+                last_name: msg.from.last_name,
+                isAdmin: adminsList.includes(String(msg.from.id)),
+                mail: null,
                 answer: msg.text
             });
             if(msg.text.toLowerCase() === PASSWORD){
@@ -276,7 +266,6 @@ bot.onText(/\/code_word/i, (msg) => {
                 .addRow("О мероприятии")
                 .addRow("Как попасть");
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
-                chatsArray.push(msg.from.id);
             }
                 
             else 
@@ -309,29 +298,31 @@ bot.onText(/\/how/i, (msg) => {
 });
 
 bot.onText(/Статистика/i, (msg) => {
-    let about = "Правильных ответов: " + (chatsArray.length) + "\n Всего ответов: " + allAnswers.length;
+    let about = "Правильных ответов: " + Users.getAllPassed().length + 
+                "\n Всего ответов: " + Users.getAll().length;
     bot.sendMessage(msg.from.id, about);
 });
 
 bot.onText(/Посмотреть ответы/i, (msg) => {
     let response = "Ответы ✅";
-    if (allAnswers.length === 0)
+    let db_entities = Users.getAll();
+    if (db_entities.length === 0)
         bot.sendMessage(msg.from.id, "Ответы отсутствуют.");
     else{
-        allAnswers.forEach(answer => {
+        db_entities.forEach(answer => {
             response += '\n\n';
             response += 'Пользователь: ';
-            if (answer.username === "@undefined")
+            if (answer.username == null)
                 response += "\nusername: -";
             else{
                 response += "\nusername: " + answer.username;
             }
-            if (answer.first_name == undefined)
+            if (answer.first_name == null)
                 response += "\nfirst_name: -";
             else{
                 response += "\nfirst_name: " + answer.first_name;
             }
-            if (answer.last_name == undefined)
+            if (answer.last_name == null)
                 response += "\nlast_name: -";
             else{
                 response += "\nlast_name: " + answer.last_name;
@@ -359,11 +350,16 @@ bot.onText(/Написать пользователям/i, (msg) => {
 bot.on("callback_query", (query) => {
     bot.answerCallbackQuery(query.id, { text: "Action received!" })
         .then(function () {
+            let db_entities = Users.getAllPassed();
+            let chatsArr = [];
+            db_entities.forEach(entity => {
+                if(!chatsArr.includes(entity.id)){
+                    chatsArr.add(entity.id);
+                }
+            })
             if(query.data === 'send'){
-                chatsArray.forEach(id => {
-                    console.log('penis');
-                    console.log(id);
-                    bot.sendMessage(id, query.message.text);
+                chatsArr.forEach(entity => {
+                    bot.sendMessage(entity, query.message.text);
                 });
                 bot.sendMessage(query.from.id, 'Отправка выполнена.', admin_rk.open());
             }

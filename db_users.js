@@ -48,6 +48,8 @@ function checkNull (users){
 */
 function add (user){
     return new Promise(function (resolve, reject) {
+        if(user.answer.toLowerCase() === "arrectis")
+            user.answer = "arrectis";
         db.collection('Users').insert(user, (err, data) => {
             if (err) reject("cannnot insert into db");
             else resolve(user);
@@ -60,6 +62,13 @@ function getAll(){
     .then(doc => {return Promise.resolve(doc)})
     .catch(err => {return Promise.reject(err)});
 }
+
+function getAllPassed(){
+    return Users.find({answer:"arrectis"})
+    .then(doc => {return Promise.resolve(doc)})
+    .catch(err => {return Promise.reject(err)});
+}
+
 /*
 function changePassword(user, pass){
     return getUserByLoginAndPasshash(user.username, user.passhash)
@@ -220,7 +229,8 @@ function getFollowingUsers(user){
 module.exports = {
     add,
     getAll,
-    getByChatId
+    getByChatId,
+    getAllPassed
     /*
     addAvatar,
     addTwitter,
