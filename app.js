@@ -336,6 +336,11 @@ bot.onText(/Посмотреть ответы/i, (msg) => {
                 }
                 response += '\nОтвет: ';
                 response += answer.answer;
+
+                if (4000 - response.length < 200){
+                    bot.sendMessage(msg.from.id, response);
+                    response = "";
+                }
             });
             bot.sendMessage(msg.from.id, response);
         }
