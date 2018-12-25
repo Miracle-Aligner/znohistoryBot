@@ -328,7 +328,7 @@ bot.onText(/ENTRANCE/i, (msg) => {
     .addRow("DRESSCODE")
     .addRow("LINEUP")
     .addRow("ENTRANCE");
-    let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
+    let info = "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
     bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
 });
 
@@ -339,7 +339,7 @@ bot.onText(/Как попасть/i, (msg) => {
         .addRow("DRESSCODE")
         .addRow("LINEUP")
         .addRow("ENTRANCE");
-    let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
+    let info = "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
     bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
 });
 
