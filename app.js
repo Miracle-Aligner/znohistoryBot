@@ -294,12 +294,22 @@ bot.onText(/ABOUT/i, (msg) => {
     bot.sendMessage(msg.from.id, about, rk.open({ resize_keyboard: true }));
 });
 
+bot.onText(/О мероприятии/i, (msg) => {
+    let about = "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.";
+    bot.sendMessage(msg.from.id, about, rk.open({ resize_keyboard: true }));
+});
+
 bot.onText(/\/about/i, (msg) => {
     let about = "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.";
     bot.sendMessage(msg.from.id, about);
 });
 
 bot.onText(/ENTRANCE/i, (msg) => {
+    let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
+    bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+});
+
+bot.onText(/Как попасть/i, (msg) => {
     let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
     bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
 });
