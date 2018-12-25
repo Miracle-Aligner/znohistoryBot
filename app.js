@@ -15,8 +15,10 @@ let admin_rk = new ntkw_module.ReplyKeyboard();
 const ik = new ntkw_module.InlineKeyboard();
 const commandsArray = [
     'Добавить e-mail',
-    'О мероприятии',
-    'Как попасть',
+    'ABOUT',
+    'ENTRANCE',
+    'DRESSCODE',
+    'LINEUP',
     'Посмотреть ответы',
     'Статистика',
     'Написать пользователям',
@@ -35,8 +37,10 @@ admin_rk
     .addRow("Посмотреть ответы")
     .addRow("Статистика")
     .addRow("Написать пользователям")
-    .addRow("О мероприятии")
-    .addRow("Как попасть");
+    .addRow("ABOUT")
+    .addRow("DRESSCODE")
+    .addRow("LINEUP")
+    .addRow("ENTRANCE");
 
 ik
     .addRow({ text: "✅ Опубликовать ", callback_data: "send" }, { text: "❌ Отменить ", callback_data: "decline" });
@@ -94,8 +98,8 @@ bot.onText(/Добавить e-mail/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk = new ntkw_module.ReplyKeyboard();
                 rk
-                .addRow("О мероприятии")
-                .addRow("Как попасть");
+                .addRow("ABOUT")
+                .addRow("ENTRANCE");
                 bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
                 chatsArray.push(msg.from.id);
             }
@@ -138,8 +142,10 @@ bot.onText(/\/start/i, (msg) => {
                     bot.removeReplyListener(replyListenerId)
                     rk = new ntkw_module.ReplyKeyboard();
                     rk
-                    .addRow("О мероприятии")
-                    .addRow("Как попасть");
+                    .addRow("ABOUT")
+                    .addRow("DRESSCODE")
+                    .addRow("LINEUP")
+                    .addRow("ENTRANCE");
                     bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                 }
                     
@@ -182,8 +188,10 @@ const getInput = (msg) => {
                     rk = new ntkw_module.ReplyKeyboard();
                     rk
                     //.addRow("Добавить e-mail")
-                    .addRow("О мероприятии")
-                    .addRow("Как попасть");
+                    .addRow("ABOUT")
+                    .addRow("DRESSCODE")
+                    .addRow("LINEUP")
+                    .addRow("ENTRANCE");
                     bot.removeReplyListener(replyListenerId)
                     bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
                     reject(`done`);
@@ -228,8 +236,10 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 rk = new ntkw_module.ReplyKeyboard();
                 rk
                 // .addRow("Добавить e-mail")
-                .addRow("О мероприятии")
-                .addRow("Как попасть"); 
+                .addRow("ABOUT")
+                .addRow("DRESSCODE")
+                .addRow("LINEUP")
+                .addRow("ENTRANCE"); 
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
             }
                 
@@ -263,8 +273,10 @@ bot.onText(/\/code_word/i, (msg) => {
                 rk = new ntkw_module.ReplyKeyboard();
                 rk
                 //.addRow("Добавить e-mail")
-                .addRow("О мероприятии")
-                .addRow("Как попасть");
+                .addRow("ABOUT")
+                .addRow("DRESSCODE")
+                .addRow("LINEUP")
+                .addRow("ENTRANCE");
                 bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
             }
                 
@@ -277,7 +289,7 @@ bot.onText(/\/code_word/i, (msg) => {
     })
 });
 
-bot.onText(/О мероприятии/i, (msg) => {
+bot.onText(/ABOUT/i, (msg) => {
     let about = "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.";
     bot.sendMessage(msg.from.id, about);
 });
@@ -287,13 +299,23 @@ bot.onText(/\/about/i, (msg) => {
     bot.sendMessage(msg.from.id, about);
 });
 
-bot.onText(/Как попасть/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\n500 пригласительных. \n\nДетали тут: https://www.technoball.com.ua/";
+bot.onText(/ENTRANCE/i, (msg) => {
+    let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
+    bot.sendMessage(msg.from.id, info);
+});
+
+bot.onText(/LINEUP/i, (msg) => {
+    let info = "MR.G (LIVE) - Термин «легенда» часто употребляется в контексте танцевальной музыки, но Mr.G, тот кто может по праву претендовать на этот статус. Музыка  Mr.G полна удовольствия, соблазна и сочных звуков. Его редкие выступления лайвом становится событием, не только для многочисленных поклонников, но и для истинных музыкальных ценителей.\n\nMARCEL DETTMANN - Марсель Деттманн признан одним из самых влиятельных артистов современного техно. Широко ассоциируясь с Berlin, Berghain и Hard Wax, Dettmann остается верным своему стилю благодаря постоянным инновациям. Он всегда стремится вдохновлять своих слушателей своими уникальными сетами\n\nSMAILOV - Заслуженно пребывает постояльцем в лайнапе украинских техно ивентов. Его сеты всегда утонченные, разноплановые, сотканные из лучшего, что дарит нам глобальная электронная сцена.\n\nVERA LOGDANIDI - Создавая свою собственную музыку и участвуя в техно-вечеринках по всему миру, она является так же со-основателем всем известного Rhythm Büro.\n\nNA NICH - Мы уже давно обратили внимание на свежее звучание этого артиста. Сейчас он активно исследует техно звучание и покоряет новые вершины под алиасом Na Nich, являясь так же со- основателем Rhythm Büro.";
+    bot.sendMessage(msg.from.id, info);
+});
+
+bot.onText(/DRESSCODE/i, (msg) => {
+    let info = "Технобал приветствует дресс код гостей. Каждому необходим бальный наряд, подходящий для рейва. Удобный низ и блистательный верх. Бальные платья, коктейльные платья, фраки и смокинги. Организаторы не ограничивают фантазию, но напоминают, что это все же бал.\n\nДля категории Debutant дресс-код обязателен.";
     bot.sendMessage(msg.from.id, info);
 });
 
 bot.onText(/\/how/i, (msg) => {
-    let info = "Guest invite – main.\nСтоимость: 750грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\nСтоимость: 1200грн.\nПриветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – free.\nДресс-код обязателен!\nЭто и есть специальная категория.\n500 пригласительных. \n\nДетали тут: https://www.technoball.com.ua/";
+    let info = "Guest invite – main\nGuest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
     bot.sendMessage(msg.from.id, info);
 });
 
@@ -383,8 +405,10 @@ bot.on("callback_query", (query) => {
                 .addRow("Посмотреть ответы")
                 .addRow("Статистика")
                 .addRow("Написать пользователям")
-                .addRow("О мероприятии")
-                .addRow("Как попасть");
+                .addRow("ABOUT")
+                .addRow("DRESSCODE")
+                .addRow("LINEUP")
+                .addRow("ENTRANCE");
                 bot.sendMessage(query.from.id, 'Отправка выполнена.', admin_rk.open());
             }
             else if(query.data === 'decline'){
