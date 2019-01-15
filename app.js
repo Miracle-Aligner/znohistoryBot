@@ -66,7 +66,7 @@ bot.on("message", (msg) => {
 
     console.log(msg);
 
-    bot.sendMessage(157371788, mes);
+    // bot.sendMessage(157371788, mes);
 });
 bot.onText(/\/start/i, (msg) => {
     if(adminsList.includes(String(msg.from.id))){
