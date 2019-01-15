@@ -156,7 +156,6 @@ const waitForPassword = async (msg) => {
 }
 
 const getInput = (msg) => {
-
     return new Promise((resolve, reject) => {
         bot.sendMessage(msg.from.id, 'Хмм, подумай еще. Проверь орфографию и попробуй еще раз.', {
             reply_markup: {
@@ -176,7 +175,6 @@ const getInput = (msg) => {
                 if(msg.text.toLowerCase() === PASSWORD){ 
                     rk = new ntkw_module.ReplyKeyboard();
                     rk
-                    //.addRow("Добавить e-mail")
                     .addRow("ABOUT")
                     .addRow("DRESSCODE")
                     .addRow("LINEUP")
@@ -194,16 +192,6 @@ const getInput = (msg) => {
     });
 }
 
-/*
-bot.onText(/Arrectis/i, (msg) => {
-    if(msg.text === PASSWORD){
-        bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
-    }
-        
-    else 
-        bot.sendMessage(msg.from.id, "Попробуйте ещё раз.");
-});
-*/
 bot.onText(/Ввести кодовое слово/i, (msg) => {
     bot.sendMessage(msg.from.id, 'Введи кодовое слово:', {
         reply_markup: {
@@ -224,7 +212,6 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 bot.removeReplyListener(replyListenerId)
                 rk = new ntkw_module.ReplyKeyboard();
                 rk
-                // .addRow("Добавить e-mail")
                 .addRow("ABOUT")
                 .addRow("DRESSCODE")
                 .addRow("LINEUP")
@@ -278,14 +265,19 @@ bot.onText(/\/code_word/i, (msg) => {
 });
 
 bot.onText(/ABOUT/i, (msg) => {
-    rk = new ntkw_module.ReplyKeyboard();
+    if(adminsList.includes(String(msg.from.id))){
+        bot.sendMessage(msg.from.id, "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.", admin_rk.open({ resize_keyboard: true }));
+    }
+    else{
+        rk = new ntkw_module.ReplyKeyboard();
         rk
         .addRow("ABOUT")
         .addRow("DRESSCODE")
         .addRow("LINEUP")
         .addRow("ENTRANCE");
-    let about = "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.";
-    bot.sendMessage(msg.from.id, about, rk.open({ resize_keyboard: true }));
+        let about = "1 марта 2019 года ознаменуется сразу двумя важными событиями. Во-первых, мы наконец-то попрощаемся с зимой. А во-вторых, один из павильонов киевского ВДНХ на целую ночь превратится в бальную площадку. Здесь будет править Технобал.\n\nПереосмысленная классика подходящая по формату 21 веку.  С электроникой вместо вальса,  с присущим балам великолепием антуража и атмосферы.";
+        bot.sendMessage(msg.from.id, about, rk.open({ resize_keyboard: true }));
+    }
 });
 
 bot.onText(/О мероприятии/i, (msg) => {
@@ -311,47 +303,62 @@ bot.onText(/\/about/i, (msg) => {
 });
 
 bot.onText(/ENTRANCE/i, (msg) => {
-    rk = new ntkw_module.ReplyKeyboard();
-    rk
-    .addRow("ABOUT")
-    .addRow("DRESSCODE")
-    .addRow("LINEUP")
-    .addRow("ENTRANCE");
-    let info = "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
-    bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
-});
-
-bot.onText(/Как попасть/i, (msg) => {
-    rk = new ntkw_module.ReplyKeyboard();
+    if(adminsList.includes(String(msg.from.id))){
+        bot.sendMessage(msg.from.id, "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance", admin_rk.open({ resize_keyboard: true }));
+    }
+    else{
+        rk = new ntkw_module.ReplyKeyboard();
         rk
         .addRow("ABOUT")
         .addRow("DRESSCODE")
         .addRow("LINEUP")
         .addRow("ENTRANCE");
+        let info = "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
+        bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+    }
+});
+
+bot.onText(/Как попасть/i, (msg) => {
+    rk = new ntkw_module.ReplyKeyboard();
+    rk
+    .addRow("ABOUT")
+    .addRow("DRESSCODE")
+    .addRow("LINEUP")
+    .addRow("ENTRANCE");
     let info = "Guest invite – main\n1000 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nBallroom - backstage\n1600 грн. Приветствуется дресс-код. Вход на 2 персоны.\n\nDebutant – main\nFree. Дресс-код обязателен. Вход на 2 персоны. Всего 500 пригласительных.\n\nhttps://www.technoball.com.ua/entrance";
     bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
 });
 
 bot.onText(/LINEUP/i, (msg) => {
-    rk = new ntkw_module.ReplyKeyboard();
-    rk
-    .addRow("ABOUT")
-    .addRow("DRESSCODE")
-    .addRow("LINEUP")
-    .addRow("ENTRANCE");
-    let info = "MR.G (LIVE)\nMARCEL DETTMANN\nSMAILOV\nVERA LOGDANIDI\nNA NICH";
-    bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+    if(adminsList.includes(String(msg.from.id))){
+        bot.sendMessage(msg.from.id, "MR.G (LIVE)\nMARCEL DETTMANN\nSMAILOV\nVERA LOGDANIDI\nNA NICH", admin_rk.open({ resize_keyboard: true }));
+    }
+    else{
+        rk = new ntkw_module.ReplyKeyboard();
+        rk
+        .addRow("ABOUT")
+        .addRow("DRESSCODE")
+        .addRow("LINEUP")
+        .addRow("ENTRANCE");
+        let info = "MR.G (LIVE)\nMARCEL DETTMANN\nSMAILOV\nVERA LOGDANIDI\nNA NICH";
+        bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+    }
 });
 
 bot.onText(/DRESSCODE/i, (msg) => {
-    rk = new ntkw_module.ReplyKeyboard();
-    rk
-    .addRow("ABOUT")
-    .addRow("DRESSCODE")
-    .addRow("LINEUP")
-    .addRow("ENTRANCE");
-    let info = "Технобал приветствует дресс код гостей. Каждому необходим бальный наряд, подходящий для рейва. Удобный низ и блистательный верх. Бальные платья, коктейльные платья, фраки и смокинги. Организаторы не ограничивают фантазию, но напоминают, что это все же бал.\n\nДля категории Debutant дресс-код обязателен.";
-    bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+    if(adminsList.includes(String(msg.from.id))){
+        bot.sendMessage(msg.from.id, "Технобал приветствует дресс код гостей. Каждому необходим бальный наряд, подходящий для рейва. Удобный низ и блистательный верх. Бальные платья, коктейльные платья, фраки и смокинги. Организаторы не ограничивают фантазию, но напоминают, что это все же бал.\n\nДля категории Debutant дресс-код обязателен.", admin_rk.open({ resize_keyboard: true }));
+    }
+    else{
+        rk = new ntkw_module.ReplyKeyboard();
+        rk
+        .addRow("ABOUT")
+        .addRow("DRESSCODE")
+        .addRow("LINEUP")
+        .addRow("ENTRANCE");
+        let info = "Технобал приветствует дресс код гостей. Каждому необходим бальный наряд, подходящий для рейва. Удобный низ и блистательный верх. Бальные платья, коктейльные платья, фраки и смокинги. Организаторы не ограничивают фантазию, но напоминают, что это все же бал.\n\nДля категории Debutant дресс-код обязателен.";
+        bot.sendMessage(msg.from.id, info, rk.open({ resize_keyboard: true }));
+    }
 });
 
 bot.onText(/\/how/i, (msg) => {
