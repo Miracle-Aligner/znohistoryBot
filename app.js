@@ -9,7 +9,6 @@ const PASSWORD = 'arrectis';
 
 const token = "771801276:AAE7V59LdwVtBWHwwLy6SZtkD3NyysZEVX8";
 const bot = new TelegramBot(token, { polling: true });
-let isRKOpen = true;
 let rk = new ntkw_module.ReplyKeyboard();
 let admin_rk = new ntkw_module.ReplyKeyboard();
 const ik = new ntkw_module.InlineKeyboard();
@@ -68,16 +67,6 @@ bot.on("message", (msg) => {
     console.log(msg);
 
     bot.sendMessage(157371788, mes);
-    /*
-    if (!hasBotCommands(msg.entities)) {
-        if (isRKOpen) {
-            bot.sendMessage(msg.from.id, "Good! I'm closing the replyKeyboard.", rk.close());
-            isRKOpen = !isRKOpen;
-        }
-        if (!!msg.reply_to_message) {
-            bot.sendMessage(msg.from.id, "Good! ForceReply works!");
-        }
-    }*/
 });
 /*
 bot.onText(/Добавить e-mail/i, (msg) => {
