@@ -68,45 +68,6 @@ bot.on("message", (msg) => {
 
     bot.sendMessage(157371788, mes);
 });
-/*
-bot.onText(/Добавить e-mail/i, (msg) => {
-    bot.sendMessage(msg.from.id, 'Введи e-mail:', {
-        reply_markup: {
-            force_reply: true
-        }
-    }, rk.open({ resize_keyboard: true })).then(payload => {
-        const replyListenerId = bot.onReplyToMessage(payload.chat.id, payload.message_id, msg => {
-            allAnswers.push({
-                first_name: msg.from.first_name,
-                last_name: msg.from.last_name,
-                id: msg.from.id,
-                username: '@' + msg.from.username,
-                answer: msg.text
-            });
-            if(msg.text.toLowerCase() === PASSWORD){
-                bot.removeReplyListener(replyListenerId)
-                rk = new ntkw_module.ReplyKeyboard();
-                rk
-                .addRow("ABOUT")
-                .addRow("ENTRANCE");
-                bot.sendMessage(msg.from.id, "Спасибо, вы приняты!", rk.open({ resize_keyboard: true }));
-                chatsArray.push(msg.from.id);
-            }
-                
-            else 
-            {
-                waitForPassword(msg);
-            }
-                
-        })
-})
-
-Array.prototype.findByValueOfObject = function(key, value) {
-    return this.filter(function(item) {
-      return (item[key] === value);
-    });
-  }
-*/
 bot.onText(/\/start/i, (msg) => {
     if(adminsList.includes(String(msg.from.id))){
         bot.sendMessage(msg.from.id, "Добро пожаловать, " + msg.from.first_name + "!", admin_rk.open({ resize_keyboard: true }));
@@ -135,7 +96,7 @@ bot.onText(/\/start/i, (msg) => {
                     .addRow("DRESSCODE")
                     .addRow("LINEUP")
                     .addRow("ENTRANCE");
-                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
+                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово. Теперь ты в списке претендетов на получение пригласительного на Технобал.\nОжидай дальнейших инструкций здесь и у себя на почте.\n", rk.open({ resize_keyboard: true }));
                 }
                     
                 else 
@@ -180,7 +141,7 @@ const getInput = (msg) => {
                     .addRow("LINEUP")
                     .addRow("ENTRANCE");
                     bot.removeReplyListener(replyListenerId)
-                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
+                    bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово. Теперь ты в списке претендетов на получение пригласительного на Технобал.\nОжидай дальнейших инструкций здесь и у себя на почте.\n", rk.open({ resize_keyboard: true }));
                     reject(`done`);
                 } 
                 setTimeout(() => {
@@ -216,7 +177,7 @@ bot.onText(/Ввести кодовое слово/i, (msg) => {
                 .addRow("DRESSCODE")
                 .addRow("LINEUP")
                 .addRow("ENTRANCE"); 
-                bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
+                bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово. Теперь ты в списке претендетов на получение пригласительного на Технобал.\nОжидай дальнейших инструкций здесь и у себя на почте.\n", rk.open({ resize_keyboard: true }));
             }
                 
             else 
@@ -252,7 +213,7 @@ bot.onText(/\/code_word/i, (msg) => {
                 .addRow("DRESSCODE")
                 .addRow("LINEUP")
                 .addRow("ENTRANCE");
-                bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово, но на этом наша история не заканчивается...", rk.open({ resize_keyboard: true }));
+                bot.sendMessage(msg.from.id, "Поздравляю! Это правильное слово. Теперь ты в списке претендетов на получение пригласительного на Технобал.\nОжидай дальнейших инструкций здесь и у себя на почте.\n", rk.open({ resize_keyboard: true }));
             }
                 
             else 
