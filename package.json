@@ -1,5 +1,5 @@
 {
-  "name": "novy_channel_bot",
+  "name": "history_bot",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -16,6 +16,9 @@
     "mongoose": "^5.4.0",
     "mongoose-paginate": "^5.0.3",
     "node-telegram-bot-api": "^0.30.0",
-    "node-telegram-keyboard-wrapper": "^2.0.1"
+    "node-telegram-keyboard-wrapper": "^2.0.1",
+    "soundcloudr": "^1.1.0",
+    "telegraf": "^3.27.1",
+    "youtube-mp3-downloader": "^0.5.3"
   }
 }
