@@ -190,13 +190,7 @@ const modules = [
                     ]).resize())
 
     bot.command('start', ({ reply }) =>
-        reply('Виберіть модуль:', modulesMenu, Users.add({
-            chat_id: msg.from.id,
-            first_name: msg.from.first_name,
-            username: msg.from.username,
-            last_name: msg.from.last_name,
-            isAdmin: adminsList.includes(String(msg.from.id))
-        })
+        reply('Виберіть модуль:', modulesMenu
     ))
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
