@@ -199,18 +199,18 @@ const modules = [
             last_name: msg.from.last_name,
             isAdmin: adminsList.includes(String(msg.from.id))
         });
-    })
-    
-    bot.hears(/.*/, (msg) => {
         Actions.add({
-            chat_id: msg.from.id,
-            message: msg.message.text
+            chat_id: ctx.from.id,
+            message: ctx.message.text
         });
-        console.log("HEEEEEEEEEEEEEEEEYY" + JSON.stringify(msg.message.text));
-        ;
     })
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
+        Actions.add({
+            chat_id: ctx.from.id,
+            message: ctx.message.text
+        });
+
         if(ctx.match[1] < 1 || ctx.match[1] > publishedModules)
             return ctx.reply("Такого модуля не існує або він ще не був опублікований 😔", modulesMenu);
         else
@@ -218,6 +218,11 @@ const modules = [
     })
 
     bot.hears(/\Лекція (\d+)/, (ctx) => {
+        Actions.add({
+            chat_id: ctx.from.id,
+            message: ctx.message.text
+        });
+
         let songsArr = [
             "https://fex.net/load/888840093332/1309398491",
             "https://fex.net/load/888840093332/1309398527",
@@ -236,6 +241,10 @@ const modules = [
 
     bot.hears('⬅️ Назад', (ctx) => {
         ctx.reply('Виберіть модуль:', modulesMenu);
+        Actions.add({
+            chat_id: ctx.from.id,
+            message: ctx.message.text
+        });
     })
 
     function getModuleInfoHTML(number){
@@ -309,7 +318,15 @@ const modules = [
         });*/
     }; 
 
-bot.launch()
+    bot.hears(/.*/, (msg) => {
+        msg.reply("Не зрозумів... Скористайтеся, будь ласка, кнопками 🙃");
+        Actions.add({
+            chat_id: msg.from.id,
+            message: msg.message.text
+        });
+    })
+
+    bot.launch()
 /*
 const bot = new TelegramBot(token, { polling: true });
 let rk = new ntkw_module.ReplyKeyboard();
