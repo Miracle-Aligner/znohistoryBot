@@ -307,15 +307,38 @@ const modules = [
                 .markup((m) => m.keyboard(lectionsList).resize());
         console.log(lectionsMenu);
         return lectionsMenu;
-        /*
-        return new Promise (function (resolve, reject) {
-            let lectionsMenu = [];
-            modules[moduleNumber].lections.forEach(element => {
-                lectionsMenu.push(element.number);
-            });
-            lectionsMenu.push("⬅️ Назад")
-            resolve (lectionsMenu)
-        });*/
+    }; 
+
+    bot.hears("stats", (msg) => {
+        if(adminsList.includes(msg.from.id))
+            msg.reply(getActionsStatsHTML());
+
+        Actions.add({
+            chat_id: msg.from.id,
+            message: msg.message.text
+        });
+    })
+
+    function getActionsStatsHTML(){
+        let html = "";
+        for (let i = 0; i < publishedModules; i++)
+            html += getConcreteActionStatsHTML(i);
+        html += "\n";
+
+        return html;
+    };     
+
+    function getConcreteActionStatsHTML(moduleNumber){
+        let actionsForModule = "";
+
+        modules[moduleNumber].lections.forEach(element => {
+            Actions.getByMessage(element.number)
+            let lectionString = "<b>" + element.number + ": </b><i>" + element.fullname + "</i>";
+            lectionsList += lectionString;
+            lectionsList += "\n";
+        });
+        lectionsList += "\n";
+        return lectionsList;
     }; 
 
     bot.hears(/.*/, (msg) => {
