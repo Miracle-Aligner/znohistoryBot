@@ -311,7 +311,7 @@ const modules = [
 
     bot.hears("stats", (msg) => {
         if(adminsList.includes(msg.from.id))
-            msg.reply(getActionsStatsHTML());
+            msg.replyWithHTML(getActionsStatsHTML());
 
         Actions.add({
             chat_id: msg.from.id,
@@ -322,7 +322,7 @@ const modules = [
     function getActionsStatsHTML(){
         let html = "";
         for (let i = 0; i < publishedModules; i++)
-            html += getConcreteActionStatsHTML(i);
+            html += "<b>" + modules[i].name + ": </b>\n" + getConcreteActionStatsHTML(i);
         html += "\n";
 
         return html;
@@ -332,13 +332,12 @@ const modules = [
         let actionsForModule = "";
 
         modules[moduleNumber].lections.forEach(element => {
-            Actions.getByMessage(element.number)
-            let lectionString = "<b>" + element.number + ": </b><i>" + element.fullname + "</i>";
-            lectionsList += lectionString;
-            lectionsList += "\n";
+            let action = Actions.getByMessage(element.number)
+            actionsForModule += "<b>" + element.number + ": </b><i>" + action.length + " звернення_ь</i>;";
+            actionsForModule += "\n";
         });
-        lectionsList += "\n";
-        return lectionsList;
+        actionsForModule += "\n";
+        return actionsForModule;
     }; 
 
     bot.hears(/.*/, (msg) => {
