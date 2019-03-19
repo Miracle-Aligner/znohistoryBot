@@ -204,9 +204,9 @@ const modules = [
     bot.hears(/.*/, (msg) => {
         Actions.add({
             chat_id: msg.from.id,
-            message: msg.text
+            message: msg.message.text
         });
-        console.log("HEEEEEEEEEEEEEEEEYY" + JSON.stringify(msg.message));
+        console.log("HEEEEEEEEEEEEEEEEYY" + JSON.stringify(msg.message.text));
         ;
     })
 
