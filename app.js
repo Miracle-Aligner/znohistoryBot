@@ -309,6 +309,7 @@ const modules = [
         return lectionsMenu;
     }; 
 
+    /*
     bot.hears("stats", (msg) => {
         msg.replyWithHTML(getActionsStatsHTML());
         if(adminsList.includes(msg.from.id))
@@ -318,7 +319,7 @@ const modules = [
             chat_id: msg.from.id,
             message: msg.message.text
         });
-    })
+    })*/
 
     function getActionsStatsHTML(){
         let html = "";
