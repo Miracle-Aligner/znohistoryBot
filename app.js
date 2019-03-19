@@ -326,11 +326,12 @@ const modulesMenu = Telegraf.Extra
         for (let i = 0; i < publishedModules; i++){
             let buf = "<b>" + modules[i].name + ": </b>\n" + getConcreteActionStatsHTML(i);
             html += buf;
+            console.log("ПЕСЮН " + html);
         }
 
         html += "\n";
 
-        console.log("PEPENIS" + html);
+        console.log("PEPENIS " + html);
         return html;
     };     
 
