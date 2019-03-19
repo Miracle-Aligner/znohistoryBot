@@ -7,35 +7,32 @@ mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds163825.mlab.com:63825/znohi
 
 let  mongoosePaginate = require('mongoose-paginate');
 
-let userSchema = new mongoose.Schema({
+let actionsSchema = new mongoose.Schema({
     chat_id: String,
-    first_name: String,
-    username: String,
-    last_name: String,
-    isAdmin: Boolean
-}, {collection: "Users"});
+    message: String,
+}, {collection: "Actions"});
 
-userSchema.plugin(mongoosePaginate);
+actionsSchema.plugin(mongoosePaginate);
 let db = mongoose.connection;
-let Users = mongoose.model('Users', userSchema, 'Users');
+let Actions = mongoose.model('Actions', actionsSchema, 'Actions');
 
 function getByChatId(chat_id){
-    return Users.findOne({chat_id: chat_id})
+    return Actions.findOne({chat_id: chat_id})
     .then (doc => {return Promise.resolve(doc)})
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
 
-function add (user){
+function add (action){
     return new Promise(function (resolve, reject) {
-        db.collection('Users').insert(user, (err, data) => {
+        db.collection('Actions').insert(action, (err, data) => {
             if (err) reject("cannnot insert into db");
-            else resolve(user);
+            else resolve(action);
         });
     });
 }
 
 function getAll(){
-    return Users.find()
+    return Actions.find()
     .then(doc => {return Promise.resolve(doc)})
     .catch(err => {return Promise.reject(err)});
 }

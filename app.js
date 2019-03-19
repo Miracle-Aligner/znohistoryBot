@@ -7,6 +7,7 @@ const Extra = require('telegraf/extra')
 const Markup = require('telegraf/markup')
 
 const Users = require("./db_users.js");
+const Actions = require("./db_actions.js");
 
 const adminsList = [
     '157371788'
@@ -189,21 +190,23 @@ const modules = [
                     m.callbackButton(modules[2].name)
                     ]).resize())
 
-    bot.command('start', ({ reply }) =>
-        reply('Виберіть модуль:', modulesMenu
-    ))
-    
-    bot.hears(/.*/, (msg) => {
+    bot.command('start', msg =>{
+        reply('Виберіть модуль:', modulesMenu);
         Users.add({
             chat_id: msg.from.id,
             first_name: msg.from.first_name,
             username: msg.from.username,
             last_name: msg.from.last_name,
-            isAdmin: adminsList.includes(String(msg.from.id)),
-            messages: [msg.text]
+            isAdmin: adminsList.includes(String(msg.from.id))
         });
-        console.log("HEY THERE");
-    } )
+    })
+    
+    bot.hears(/.*/, (msg) => {
+        Actions.add({
+            chat_id: msg.from.id,
+            message: msg.text
+        });
+    })
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
         if(ctx.match[1] < 1 || ctx.match[1] > publishedModules)
