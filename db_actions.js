@@ -49,8 +49,7 @@ function getQuantityByMessage(message){
         if(doc)
             return Promise.resolve(doc.length)
         else 
-            return 0})
-    .catch (err => {console.log(err); return 0});
+            return 0});
 }
 
 module.exports = {
