@@ -313,7 +313,7 @@ const modulesMenu = Telegraf.Extra
     
     bot.hears(/fucc/, (msg) => {
         //if(adminsList.includes(msg.from.id))
-            getActionsStatsHTML().then(html => msg.replyWithHTML(html));
+            getActionsStatsHTML().then(html => msg.replyWithHTML(html)).catch(err=> console.log("EBAT' " + err));
 
         Actions.add({
             chat_id: msg.from.id,
@@ -331,6 +331,7 @@ const modulesMenu = Telegraf.Extra
                     html += buf;
                     console.log("ПЕСЮН " + html);
                 })
+                .catch(err=> console.log("TI LOH' " + err));
             }
 
             html += "\n";
