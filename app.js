@@ -336,11 +336,11 @@ const modulesMenu = Telegraf.Extra
         let actionsForModule = "";
 
         modules[moduleNumber].lections.forEach(element => {
-            Actions.getByMessage(element.number)
-            .then(action => {
-                console.log("PENIS " + action);
-                console.log("GAY " + JSON.stringify(action));
-                let newStr = "<b>" + element.number + ": </b><i>" + action.length + " звернення_ь</i>;\n";
+            Actions.getQuantityByMessage(element.number)
+            .then(actionQuantity => {
+                console.log("PENIS " + actionQuantity);
+                console.log("GAY " + JSON.stringify(actionQuantity));
+                let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернення_ь</i>;\n";
                 actionsForModule += newStr;
             })
             .catch(err => {
