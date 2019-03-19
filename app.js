@@ -225,7 +225,7 @@ const modules = [
         return  "<b>" + modules[number].name + 
                 "</b><a href=\'" + modules[number].imgLink + 
                 "\'>.</a>\n\n<i>" + modules[number].description + 
-                "</i>\n\n<a href=\'" + modules[number].link + 
+                "</i>\n\n" + getLectionsListHTML(number) + "<a href=\'" + modules[number].link + 
                 "\'>Переглянути лекції на сайті... </a>";
     };
 
@@ -258,6 +258,17 @@ const modules = [
         }
         return false;
       }
+
+      function getLectionsListHTML(moduleNumber){
+        let lectionsList = "";
+            modules[moduleNumber - 1].lections.forEach(element => {
+                let lectionString = "<i>" + element.number + ": </i>" + element.fullname;
+                lectionsList += lectionString;
+                lectionsList += "\n";
+            });
+            lectionsList += "\n";
+        return lectionsList;
+    }; 
 
     function getLectionsMenu(moduleNumber){
         let lectionsList = [];
