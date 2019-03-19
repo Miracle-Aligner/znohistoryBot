@@ -311,7 +311,7 @@ const modulesMenu = Telegraf.Extra
     }; 
 
     
-    bot.hears(/\fucc/, (msg) => {
+    bot.hears(/fucc/, (msg) => {
         //if(adminsList.includes(msg.from.id))
             msg.replyWithHTML(getActionsStatsHTML());
 
