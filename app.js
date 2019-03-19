@@ -201,8 +201,8 @@ const modulesMenu = Telegraf.Extra
             isAdmin: adminsList.includes(String(msg.from.id))
         }).catch(err => console.log(err));
         Actions.add({
-            chat_id: ctx.from.id,
-            message: ctx.message.text
+            chat_id: msg.from.id,
+            message: msg.message.text
         });
     })
 
