@@ -261,7 +261,7 @@ const modules = [
 
       function getLectionsListHTML(moduleNumber){
         let lectionsList = "";
-            modules[moduleNumber - 1].lections.forEach(element => {
+            modules[moduleNumber].lections.forEach(element => {
                 let lectionString = "<b>" + element.number + ": </b><i>" + element.fullname + "</i>";
                 lectionsList += lectionString;
                 lectionsList += "\n";
