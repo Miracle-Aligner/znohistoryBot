@@ -193,7 +193,7 @@ const modules = [
         reply('Виберіть модуль:', modulesMenu
     ))
     
-    bot.hears(/\*/, (msg) => {
+    bot.hears(/.*/, (msg) => {
         Users.add({
             chat_id: msg.from.id,
             first_name: msg.from.first_name,

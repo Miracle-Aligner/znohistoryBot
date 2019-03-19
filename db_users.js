@@ -13,8 +13,7 @@ let userSchema = new mongoose.Schema({
     username: String,
     last_name: String,
     isAdmin: Boolean,
-    mail: String,
-    answer: String,
+    messages: Array,
 }, {collection: "Users"});
 
 userSchema.plugin(mongoosePaginate);
