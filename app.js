@@ -330,11 +330,6 @@ const modulesMenu = Telegraf.Extra
                 html += buf;
                 console.log("ПЕСЮН " + html);
             })
-            .catch(lectionsByModule => {
-                let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
-                html += buf;
-                console.log("PESERROR " + html);
-            })
         }
 
         html += "\n";
