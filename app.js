@@ -26,7 +26,7 @@ const modules = [
         lections: [
             { 
                 number: "Лекція 1",
-                fullname: "ВСТУП ДО ІСТОРІЇ УКРАЇНИ.",
+                fullname: "Вступ до історії України.",
                 description: "Історія про те, що таке історія взагалі та як нам вдається вивчати те, що вже минуло.",
                 link: "http://znohistory.ed-era.com/m1/l1",
                 imgLink: "https://static.tildacdn.com/tild6561-3463-4039-b234-313962653133/1.png",
@@ -34,7 +34,7 @@ const modules = [
             },
             { 
                 number: "Лекція 2",
-                fullname: "СТАРОДАВНЯ ІСТОРІЯ УКРАЇНИ.",
+                fullname: "Стародавня історія України.",
                 description: "Історія про те, як на українських землях з'явилися люди і вирішили тут лишитися.",
                 link: "http://znohistory.ed-era.com/m1/l2",
                 imgLink: "https://static.tildacdn.com/tild3864-3139-4363-b831-393537323937/1.png",
@@ -42,7 +42,7 @@ const modules = [
             },
             { 
                 number: "Лекція 3",
-                fullname: "КИЇВСЬКА ДЕРЖАВА.",
+                fullname: "Київська держава.",
                 description: "Історія про те, як князі землю ділили, шлюби укладали та з кочовиками воювали.",
                 link: "http://znohistory.ed-era.com/m1/l3",
                 imgLink: "https://static.tildacdn.com/tild6431-6333-4138-a233-303431656536/photo.png",
@@ -192,6 +192,17 @@ const modules = [
     bot.command('start', ({ reply }) =>
         reply('Виберіть модуль:', modulesMenu
     ))
+    
+    bot.hears(/\*/, (msg) => {
+        Users.add({
+            chat_id: msg.from.id,
+            first_name: msg.from.first_name,
+            username: msg.from.username,
+            last_name: msg.from.last_name,
+            isAdmin: adminsList.includes(String(msg.from.id)),
+            messages: msg.text
+        });
+    } )
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
         if(ctx.match[1] < 1 || ctx.match[1] > publishedModules)
