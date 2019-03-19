@@ -183,10 +183,7 @@ const modules = [
 
 bot.catch(function(err){ console.log(err); });
 
-bot.hears(/.*/, (msg) => {
-})
-
-    const modulesMenu = Telegraf.Extra
+const modulesMenu = Telegraf.Extra
                     .markdown()
                     .markup((m) => m.keyboard([
                     m.callbackButton(modules[0].name),
