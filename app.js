@@ -181,6 +181,8 @@ const modules = [
     }
 ];
 
+bot.catch(function(err){ console.log(err); });
+
 bot.hears(/.*/, (msg) => {
 })
 
