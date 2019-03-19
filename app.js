@@ -340,12 +340,13 @@ const modulesMenu = Telegraf.Extra
             .then(actionQuantity => {
                 let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернень/ня</i>;\n";
                 actionsForModule += newStr;
+                console.log("FUCC" + actionQuantity);
             })
             .catch(err => {
                 console.log(err);
                 let newStr = "<b>" + element.number + ": </b><i>0 звернень</i>;\n";
                 actionsForModule += newStr;
-                return newStr;
+                console.log("MEEE" + actionQuantity);
             })
         });
         actionsForModule += "\n";
