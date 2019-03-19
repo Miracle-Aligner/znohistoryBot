@@ -327,14 +327,14 @@ const modulesMenu = Telegraf.Extra
             getConcreteActionStatsHTML(0)
                 .then(lectionsByModule => {
                     let buf = "<b>" + modules[0].name + ": </b>\n" + lectionsByModule;
-                    resolve(buf)
+                    return(buf)
                 })
                 .then( data => {
                     getConcreteActionStatsHTML(1)
                     .then(lectionsByModule => {
                         let buf = "<b>" + modules[1].name + ": </b>\n" + lectionsByModule;
                         data += buf;
-                        resolve(data);
+                        return(data);
                     })
                     .then(data => {
                         getConcreteActionStatsHTML(2)
