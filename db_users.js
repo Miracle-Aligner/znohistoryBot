@@ -8,7 +8,7 @@ mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds163825.mlab.com:63825/znohi
 let  mongoosePaginate = require('mongoose-paginate');
 
 let userSchema = new mongoose.Schema({
-    chat_id: String,
+    _id: String,
     first_name: String,
     username: String,
     last_name: String,

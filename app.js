@@ -313,7 +313,7 @@ const modulesMenu = Telegraf.Extra
     
     bot.hears(/fucc/, (msg) => {
         //if(adminsList.includes(msg.from.id))
-            getActionsStatsHTML().then(html => msg.replyWithHTML(html)).catch(err=> console.log("EBAT' " + err));
+            msg.replyWithHTML(getActionsStatsHTML());
 
         Actions.add({
             chat_id: msg.from.id,
@@ -322,33 +322,20 @@ const modulesMenu = Telegraf.Extra
     })
 
     function getActionsStatsHTML(){
-        return new Promise(function (resolve, reject) {
-           
-            getConcreteActionStatsHTML(0)
-                .then(lectionsByModule => {
-                    let buf = "<b>" + modules[0].name + ": </b>\n" + lectionsByModule;
-                    return(buf)
-                })
-                .then( data => {
-                    getConcreteActionStatsHTML(1)
-                    .then(lectionsByModule => {
-                        let buf = "<b>" + modules[1].name + ": </b>\n" + lectionsByModule;
-                        data += buf;
-                        return(data);
-                    })
-                    .then(data => {
-                        getConcreteActionStatsHTML(2)
-                        .then(lectionsByModule => {
-                            let buf = "<b>" + modules[2].name + ": </b>\n" + lectionsByModule;
-                            data += buf;
-                            resolve(data);
-                        })
-                        .catch(err=> console.log("TI LOH' " + err));
-                    })
-                    .catch(err=> console.log("TI LOH' " + err));
-                })
-                .catch(err=> console.log("TI LOH' " + err));
-        });
+        let html = "";
+        for (let i = 0; i < publishedModules; i++){
+            getConcreteActionStatsHTML(i)
+            .then(lectionsByModule => {
+                let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
+                html += buf;
+                console.log("ПЕСЮН " + html);
+            })
+        }
+
+        html += "\n";
+
+        console.log("PEPENIS " + html);
+        return html;
     };     
 
     function getConcreteActionStatsHTML(moduleNumber){
@@ -372,7 +359,9 @@ const modulesMenu = Telegraf.Extra
                 });
                 actionsForModule += "\n";
                 resolve(actionsForModule);
-        });    
+        });
+
+        
     }; 
 
     bot.hears(/.*/, (msg) => {
