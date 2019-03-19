@@ -341,7 +341,6 @@ const modulesMenu = Telegraf.Extra
     function getConcreteActionStatsHTML(moduleNumber){
 
         return new Promise(function (resolve, reject) {
-            db.collection('Users').insert(user, (err, data) => {
                 let actionsForModule = "";
 
                 modules[moduleNumber].lections.forEach(element => {
@@ -360,10 +359,7 @@ const modulesMenu = Telegraf.Extra
                 });
                 actionsForModule += "\n";
                 resolve(actionsForModule);
-            });
-        });
-
-        
+        });    
     }; 
 
     bot.hears(/.*/, (msg) => {
