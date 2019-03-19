@@ -310,7 +310,7 @@ const modules = [
     }; 
 
     
-    bot.hears("/stats", (msg) => {
+    bot.hears(/\fucc/, (msg) => {
         msg.replyWithHTML(getActionsStatsHTML());
         if(adminsList.includes(msg.from.id))
             msg.replyWithHTML(getActionsStatsHTML());
