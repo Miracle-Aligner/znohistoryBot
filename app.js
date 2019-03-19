@@ -199,7 +199,7 @@ const modulesMenu = Telegraf.Extra
             username: msg.from.username,
             last_name: msg.from.last_name,
             isAdmin: adminsList.includes(String(msg.from.id))
-        });
+        }).catch(err => console.log(err));
         Actions.add({
             chat_id: ctx.from.id,
             message: ctx.message.text
