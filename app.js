@@ -181,6 +181,8 @@ const modules = [
     }
 ];
 
+bot.hears(/.*/, (msg) => {
+})
 
     const modulesMenu = Telegraf.Extra
                     .markdown()

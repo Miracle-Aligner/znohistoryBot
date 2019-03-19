@@ -43,9 +43,16 @@ function getByMessage(message){
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
 
+function getQuantityByMessage(message){
+    return Actions.findOne({message: message})
+    .then (doc => {return Promise.resolve(doc.length)})
+    .catch (err => {console.log(err); return Promise.reject(err)});
+}
+
 module.exports = {
     add,
     getAll,
     getByChatId,
-    getByMessage
+    getByMessage,
+    getQuantityByMessage
 }
