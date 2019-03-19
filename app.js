@@ -206,7 +206,7 @@ const modules = [
             chat_id: msg.from.id,
             message: msg.text
         });
-        console.log("HEEEEEEEEEEEEEEEEYY" + msg.match[0]);
+        console.log("HEEEEEEEEEEEEEEEEYY" + JSON.stringify(msg.text));
         ;
     })
 
