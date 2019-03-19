@@ -38,13 +38,13 @@ function getAll(){
 }
 
 function getByMessage(message){
-    return Actions.findOne({message: message})
+    return Actions.find({message: message})
     .then (doc => {return Promise.resolve(doc)})
     .catch (err => {console.log(err); return Promise.reject(err)});
 }
 
 function getQuantityByMessage(message){
-    return Actions.findOne({message: message})
+    return Actions.find({message: message})
     .then (doc => {
         if(doc)
             return Promise.resolve(doc.length)
