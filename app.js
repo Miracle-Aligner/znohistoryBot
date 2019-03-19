@@ -202,6 +202,7 @@ const modules = [
             isAdmin: adminsList.includes(String(msg.from.id)),
             messages: [msg.text]
         });
+        console.log("HEY THERE");
     } )
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
