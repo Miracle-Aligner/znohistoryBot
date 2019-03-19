@@ -311,8 +311,7 @@ const modules = [
 
     
     bot.hears(/\fucc/, (msg) => {
-        msg.replyWithHTML(getActionsStatsHTML());
-        if(adminsList.includes(msg.from.id))
+        //if(adminsList.includes(msg.from.id))
             msg.replyWithHTML(getActionsStatsHTML());
 
         Actions.add({
