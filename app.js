@@ -324,9 +324,12 @@ const modulesMenu = Telegraf.Extra
     function getActionsStatsHTML(){
         let html = "";
         for (let i = 0; i < publishedModules; i++){
-            let buf = "<b>" + modules[i].name + ": </b>\n" + getConcreteActionStatsHTML(i);
-            html += buf;
-            console.log("ПЕСЮН " + html);
+            getConcreteActionStatsHTML(i)
+            .then(lectionsByModule => {
+                let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
+                html += buf;
+                console.log("ПЕСЮН " + html);
+            })
         }
 
         html += "\n";
@@ -336,24 +339,31 @@ const modulesMenu = Telegraf.Extra
     };     
 
     function getConcreteActionStatsHTML(moduleNumber){
-        let actionsForModule = "";
 
-        modules[moduleNumber].lections.forEach(element => {
-            Actions.getQuantityByMessage(element.number)
-            .then(actionQuantity => {
-                let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернень/ня</i>;\n";
-                actionsForModule += newStr;
-                console.log("FUCC" + actionQuantity);
-            })
-            .catch(err => {
-                console.log(err);
-                let newStr = "<b>" + element.number + ": </b><i>0 звернень</i>;\n";
-                actionsForModule += newStr;
-                console.log("MEEE" + actionQuantity);
-            })
+        return new Promise(function (resolve, reject) {
+            db.collection('Users').insert(user, (err, data) => {
+                let actionsForModule = "";
+
+                modules[moduleNumber].lections.forEach(element => {
+                    Actions.getQuantityByMessage(element.number)
+                    .then(actionQuantity => {
+                        let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернень/ня</i>;\n";
+                        actionsForModule += newStr;
+                        console.log("FUCC" + actionQuantity);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        let newStr = "<b>" + element.number + ": </b><i>0 звернень</i>;\n";
+                        actionsForModule += newStr;
+                        console.log("MEEE" + actionQuantity);
+                    })
+                });
+                actionsForModule += "\n";
+                resolve(actionsForModule);
+            });
         });
-        actionsForModule += "\n";
-        return actionsForModule;
+
+        
     }; 
 
     bot.hears(/.*/, (msg) => {
