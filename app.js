@@ -338,12 +338,14 @@ const modulesMenu = Telegraf.Extra
         modules[moduleNumber].lections.forEach(element => {
             Actions.getQuantityByMessage(element.number)
             .then(actionQuantity => {
-                let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернення_ь</i>;\n";
+                let newStr = "<b>" + element.number + ": </b><i>" + actionQuantity + " звернень/ня</i>;\n";
                 actionsForModule += newStr;
             })
             .catch(err => {
                 console.log(err);
-                return err;
+                let newStr = "<b>" + element.number + ": </b><i>0 звернень</i>;\n";
+                actionsForModule += newStr;
+                return newStr;
             })
         });
         actionsForModule += "\n";
