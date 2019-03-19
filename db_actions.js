@@ -46,7 +46,7 @@ function getByMessage(message){
 function getQuantityByMessage(message){
     return Actions.findOne({message: message})
     .then (doc => {
-        if(doc != null)
+        if(doc)
             return Promise.resolve(doc.length)
         else 
             return 0})
