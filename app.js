@@ -194,7 +194,7 @@ const modulesMenu = Telegraf.Extra
     bot.command('start', msg =>{
         msg.reply('Виберіть модуль:', modulesMenu);
         Users.add({
-            chat_id: msg.from.id,
+            _id: msg.from.id,
             first_name: msg.from.first_name,
             username: msg.from.username,
             last_name: msg.from.last_name,
