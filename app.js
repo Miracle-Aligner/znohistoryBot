@@ -191,7 +191,7 @@ const modules = [
                     ]).resize())
 
     bot.command('start', msg =>{
-        reply('Виберіть модуль:', modulesMenu);
+        msg.reply('Виберіть модуль:', modulesMenu);
         Users.add({
             chat_id: msg.from.id,
             first_name: msg.from.first_name,
