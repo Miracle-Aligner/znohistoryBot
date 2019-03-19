@@ -323,22 +323,31 @@ const modulesMenu = Telegraf.Extra
 
     function getActionsStatsHTML(){
         return new Promise(function (resolve, reject) {
-            let html = "";
-
-            for (let i = 0, p = Promise.resolve(); i < publishedModules; i++) {
-                p = p.then(_ => new Promise(resolve =>
-                    getConcreteActionStatsHTML(i)
+           
+            getConcreteActionStatsHTML(0)
+                .then(lectionsByModule => {
+                    let buf = "<b>" + modules[0].name + ": </b>\n" + lectionsByModule;
+                    resolve(buf)
+                })
+                .then( data => {
+                    getConcreteActionStatsHTML(1)
                     .then(lectionsByModule => {
-                        let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
-                        html += buf;
-                        console.log("ПЕСЮН " + html);
-                        resolve();
+                        let buf = "<b>" + modules[1].name + ": </b>\n" + lectionsByModule;
+                        data += buf;
+                        resolve(data);
                     })
-                    .catch(err=> console.log("TI LOH' " + err))
-                ));
-            }
-            
-            resolve(html);
+                    .then(data => {
+                        getConcreteActionStatsHTML(2)
+                        .then(lectionsByModule => {
+                            let buf = "<b>" + modules[2].name + ": </b>\n" + lectionsByModule;
+                            data += buf;
+                            resolve(data);
+                        })
+                        .catch(err=> console.log("TI LOH' " + err));
+                    })
+                    .catch(err=> console.log("TI LOH' " + err));
+                })
+                .catch(err=> console.log("TI LOH' " + err));
         });
     };     
 
