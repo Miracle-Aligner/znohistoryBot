@@ -324,6 +324,22 @@ const modulesMenu = Telegraf.Extra
     function getActionsStatsHTML(){
         return new Promise(function (resolve, reject) {
             let html = "";
+
+            for (let i = 0, p = Promise.resolve(); i < publishedModules; i++) {
+                p = p.then(_ => new Promise(resolve =>
+                    getConcreteActionStatsHTML(i)
+                    .then(lectionsByModule => {
+                        let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
+                        html += buf;
+                        console.log("ПЕСЮН " + html);
+                        resolve();
+                    })
+                    .catch(err=> console.log("TI LOH' " + err))
+                ));
+            }
+
+
+
             for (let i = 0; i < publishedModules; i++){
                 getConcreteActionStatsHTML(i)
                 .then(lectionsByModule => {
