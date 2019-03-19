@@ -200,7 +200,7 @@ const modules = [
             username: msg.from.username,
             last_name: msg.from.last_name,
             isAdmin: adminsList.includes(String(msg.from.id)),
-            messages: msg.text
+            messages: [msg.text]
         });
     } )
 
