@@ -312,7 +312,7 @@ const modulesMenu = Telegraf.Extra
 
     
     bot.hears(/fucc/, (msg) => {
-        if(adminsList.includes(msg.from.id))
+        //if(adminsList.includes(msg.from.id))
             getActionsStatsHTML().then(html => msg.replyWithHTML(html));
 
         Actions.add({
