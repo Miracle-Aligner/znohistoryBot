@@ -329,6 +329,8 @@ const modulesMenu = Telegraf.Extra
         }
 
         html += "\n";
+
+        console.log("PEPENIS" + html);
         return html;
     };     
 
