@@ -206,7 +206,8 @@ const modules = [
             chat_id: msg.from.id,
             message: msg.text
         });
-        console.log("HEEEEEEEEEEEEEEEEYY" + msg.from.id);
+        console.log("HEEEEEEEEEEEEEEEEYY" + JSON.stringify(msg));
+        ;
     })
 
     bot.hears(/\МОДУЛЬ (\d+)/, (ctx) => {
