@@ -337,22 +337,7 @@ const modulesMenu = Telegraf.Extra
                     .catch(err=> console.log("TI LOH' " + err))
                 ));
             }
-
-
-
-            for (let i = 0; i < publishedModules; i++){
-                getConcreteActionStatsHTML(i)
-                .then(lectionsByModule => {
-                    let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
-                    html += buf;
-                    console.log("ПЕСЮН " + html);
-                })
-                .catch(err=> console.log("TI LOH' " + err));
-            }
-
-            html += "\n";
-
-            console.log("PEPENIS " + html);
+            
             resolve(html);
         });
     };     
