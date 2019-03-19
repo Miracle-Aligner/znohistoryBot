@@ -336,10 +336,13 @@ const modules = [
 
         modules[moduleNumber].lections.forEach(element => {
             let action = Actions.getByMessage(element.number)
+            console.log("PENIS " + action.message);
             let newStr = "<b>" + element.number + ": </b><i>" + action.length + " звернення_ь</i>;\n";
             actionsForModule += newStr;
         });
         actionsForModule += "\n";
+
+        console.log("\n\nCUNT " + actionsForModule);
         return actionsForModule;
     }; 
 
