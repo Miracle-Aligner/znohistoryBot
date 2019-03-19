@@ -28,7 +28,7 @@ function getByChatId(chat_id){
 function add (user){
     return new Promise(function (resolve, reject) {
         db.collection('Users').insert(user, (err, data) => {
-            if (err) reject("cannnot insert into db");
+            if (err) reject(err);
             else resolve(user);
         });
     });
