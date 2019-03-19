@@ -309,8 +309,8 @@ const modules = [
         return lectionsMenu;
     }; 
 
-    /*
-    bot.hears("stats", (msg) => {
+    
+    bot.hears("/stats", (msg) => {
         msg.replyWithHTML(getActionsStatsHTML());
         if(adminsList.includes(msg.from.id))
             msg.replyWithHTML(getActionsStatsHTML());
@@ -319,14 +319,16 @@ const modules = [
             chat_id: msg.from.id,
             message: msg.message.text
         });
-    })*/
+    })
 
     function getActionsStatsHTML(){
         let html = "";
-        for (let i = 0; i < publishedModules; i++)
-            html += "<b>" + modules[i].name + ": </b>\n" + getConcreteActionStatsHTML(i);
-        html += "\n";
+        for (let i = 0; i < publishedModules; i++){
+            let buf = "<b>" + modules[i].name + ": </b>\n" + getConcreteActionStatsHTML(i);
+            html += buf;
+        }
 
+        html += "\n";
         return html;
     };     
 
@@ -335,8 +337,8 @@ const modules = [
 
         modules[moduleNumber].lections.forEach(element => {
             let action = Actions.getByMessage(element.number)
-            actionsForModule += "<b>" + element.number + ": </b><i>" + action.length + " звернення_ь</i>;";
-            actionsForModule += "\n";
+            let newStr = "<b>" + element.number + ": </b><i>" + action.length + " звернення_ь</i>;\n";
+            actionsForModule += newStr;
         });
         actionsForModule += "\n";
         return actionsForModule;
