@@ -310,7 +310,7 @@ const modulesMenu = Telegraf.Extra
         return lectionsMenu;
     }; 
 
-    
+    /*
     bot.hears(/fucc/, (msg) => {
         //if(adminsList.includes(msg.from.id))
             msg.replyWithHTML(getActionsStatsHTML());
@@ -362,7 +362,7 @@ const modulesMenu = Telegraf.Extra
         });
 
         
-    }; 
+    }; */
 
     bot.hears(/.*/, (msg) => {
         msg.reply("Не зрозумів... Скористайтеся, будь ласка, кнопками 🙃");
