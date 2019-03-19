@@ -312,8 +312,8 @@ const modulesMenu = Telegraf.Extra
 
     
     bot.hears(/fucc/, (msg) => {
-        //if(adminsList.includes(msg.from.id))
-            msg.replyWithHTML(getActionsStatsHTML());
+        if(adminsList.includes(msg.from.id))
+            getActionsStatsHTML().then(html => msg.replyWithHTML(html));
 
         Actions.add({
             chat_id: msg.from.id,
@@ -322,20 +322,22 @@ const modulesMenu = Telegraf.Extra
     })
 
     function getActionsStatsHTML(){
-        let html = "";
-        for (let i = 0; i < publishedModules; i++){
-            getConcreteActionStatsHTML(i)
-            .then(lectionsByModule => {
-                let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
-                html += buf;
-                console.log("ПЕСЮН " + html);
-            })
-        }
+        return new Promise(function (resolve, reject) {
+            let html = "";
+            for (let i = 0; i < publishedModules; i++){
+                getConcreteActionStatsHTML(i)
+                .then(lectionsByModule => {
+                    let buf = "<b>" + modules[i].name + ": </b>\n" + lectionsByModule;
+                    html += buf;
+                    console.log("ПЕСЮН " + html);
+                })
+            }
 
-        html += "\n";
+            html += "\n";
 
-        console.log("PEPENIS " + html);
-        return html;
+            console.log("PEPENIS " + html);
+            resolve(html);
+        });
     };     
 
     function getConcreteActionStatsHTML(moduleNumber){
