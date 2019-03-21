@@ -141,7 +141,7 @@ const modules = [
                 description: "Історія про територіальні зміни, українське національне відродження та масонів.",
                 link: "http://znohistory.ed-era.com/m3/l12",
                 imgLink: "https://static.tildacdn.com/tild3566-3762-4666-a132-353332656639/12.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/415830496302/1318278720"
             },
             { 
                 number: "Лекція 13-14",
@@ -149,7 +149,7 @@ const modules = [
                 description: "Історія про весну народів, будителів та Руську трійцю.",
                 link: "http://znohistory.ed-era.com/m3/l13-l14",
                 imgLink: "https://static.tildacdn.com/tild3737-3133-4133-a437-336665613930/_-1.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/415830496302/1318278767"
             },
             { 
                 number: "Лекція 15",
@@ -157,7 +157,7 @@ const modules = [
                 description: "-",
                 link: "http://znohistory.ed-era.com/m3/l15",
                 imgLink: "https://static.tildacdn.com/tild6165-6536-4663-a339-653537636264/_15.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/415830496302/1318278850"
             },
             { 
                 number: "Лекція 16",
@@ -165,7 +165,7 @@ const modules = [
                 description: "-",
                 link: "http://znohistory.ed-era.com/m3/l16",
                 imgLink: "https://static.tildacdn.com/tild3131-3363-4361-a539-326662313462/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/415830496302/1318278887"
             },
             { 
                 number: "Лекція 17",
@@ -173,7 +173,7 @@ const modules = [
                 description: "-",
                 link: "http://znohistory.ed-era.com/m3/l17",
                 imgLink: "https://static.tildacdn.com/tild6434-6461-4265-b932-623234633761/Lecturre17.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/415830496302/1318278907"
             }
         ],
         numberOfLections: 5,
@@ -237,7 +237,12 @@ const modulesMenu = Telegraf.Extra
         if(ctx.match[1] < 1 || ctx.match[1] > publishedLections)
             return ctx.reply("Такої лекції не існує або вона ще не була опублікована 😔", modulesMenu);
         else
-            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx.replyWithAudio(songsArr[Math.floor(Math.random() * 6)]));
+            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx =>{
+                if (ctx.match[1] === 3)
+                    ctx.replyWithAudio(modules[3].lections[ctx.match[1]].audioLink);
+                else 
+                    ctx.replyWithAudio(songsArr[Math.floor(Math.random() * 6)]);
+            });
     })
 
     bot.hears('⬅️ Назад', (ctx) => {
