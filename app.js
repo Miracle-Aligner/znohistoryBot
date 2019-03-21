@@ -237,12 +237,7 @@ const modulesMenu = Telegraf.Extra
         if(ctx.match[1] < 1 || ctx.match[1] > publishedLections)
             return ctx.reply("Такої лекції не існує або вона ще не була опублікована 😔", modulesMenu);
         else
-            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx =>{
-                if (ctx.match[1] === 3)
-                    ctx.replyWithAudio(modules[3].lections[ctx.match[1]].audioLink);
-                else 
-                    ctx.replyWithAudio(songsArr[Math.floor(Math.random() * 6)]);
-            });
+            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx.replyWithAudio("https://fex.net/load/415830496302/1318278850"));
     })
 
     bot.hears('⬅️ Назад', (ctx) => {
