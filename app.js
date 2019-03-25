@@ -15,7 +15,7 @@ const adminsList = [
 
 const bot = new Telegraf("769848173:AAHugU3o4R1Lv8Ow-vDWXl7ZfMokiPoIs9Y")
 const publishedModules = 3;
-const publishedLections = 16;
+const publishedLections = 17;
 bot.use(Telegraf.log())
 
 const modules = [
