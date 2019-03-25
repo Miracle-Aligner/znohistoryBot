@@ -31,7 +31,7 @@ const modules = [
                 description: "Історія про те, що таке історія взагалі та як нам вдається вивчати те, що вже минуло.",
                 link: "http://znohistory.ed-era.com/m1/l1",
                 imgLink: "https://static.tildacdn.com/tild6561-3463-4039-b234-313962653133/1.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/098504114963/1323870499"
             },
             { 
                 number: "Лекція 2",
@@ -39,7 +39,7 @@ const modules = [
                 description: "Історія про те, як на українських землях з'явилися люди і вирішили тут лишитися.",
                 link: "http://znohistory.ed-era.com/m1/l2",
                 imgLink: "https://static.tildacdn.com/tild3864-3139-4363-b831-393537323937/1.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/098504114963/1323870552"
             },
             { 
                 number: "Лекція 3",
@@ -47,7 +47,7 @@ const modules = [
                 description: "Історія про те, як князі землю ділили, шлюби укладали та з кочовиками воювали.",
                 link: "http://znohistory.ed-era.com/m1/l3",
                 imgLink: "https://static.tildacdn.com/tild6431-6333-4138-a233-303431656536/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/098504114963/1323870594"
             },
             { 
                 number: "Лекція 4",
@@ -55,7 +55,7 @@ const modules = [
                 description: "Історія про те, як Данило Галицький коронувався, а монголи вторглися на Русь.",
                 link: "http://znohistory.ed-era.com/m1/l4",
                 imgLink: "https://static.tildacdn.com/tild3037-3837-4137-a436-663030633539/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/098504114963/1323870625"
             },
             { 
                 number: "Лекція 5",
@@ -63,7 +63,7 @@ const modules = [
                 description: "Історія про війни, королів, козаків та Україну в складі іноземних держав.",
                 link: "http://znohistory.ed-era.com/m1/l5",
                 imgLink: "https://static.tildacdn.com/tild6331-3635-4636-b132-623133333263/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/098504114963/1323870660"
             }
         ],
         numberOfLections: 5,
@@ -82,7 +82,7 @@ const modules = [
                 description: "Історія про утворення Речі Постополитої, заснування Січі, Реформацію та Контрреформацію.",
                 link: "http://znohistory.ed-era.com/m2/l6",
                 imgLink: "https://static.tildacdn.com/tild6136-3232-4661-b037-386363306463/6.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953141"
             },
             { 
                 number: "Лекція 7",
@@ -90,7 +90,7 @@ const modules = [
                 description: "Історія про козацькі походи, повстання, церковне життя та культуру українських земель.",
                 link: "http://znohistory.ed-era.com/m2/l7",
                 imgLink: "https://static.tildacdn.com/tild3839-3433-4238-a138-663734313263/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953183"
             },
             { 
                 number: "Лекція 8",
@@ -98,7 +98,7 @@ const modules = [
                 description: "Історія про початок війни за незалежність, битви, угоди та перемир'я.",
                 link: "http://znohistory.ed-era.com/m2/l8",
                 imgLink: "https://static.tildacdn.com/tild6234-3036-4135-b737-646636303837/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953224"
             },
             { 
                 number: "Лекція 9",
@@ -106,7 +106,7 @@ const modules = [
                 description: "Історія про роздробленість, війни та гетьманів, що надто часто змінювалися.",
                 link: "http://znohistory.ed-era.com/m2/l9",
                 imgLink: "https://static.tildacdn.com/tild3263-3130-4231-a635-306439653430/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953275"
             },
             { 
                 number: "Лекція 10",
@@ -114,7 +114,7 @@ const modules = [
                 description: "Історія про союз зі шведами, перемогу малоросійства та першу Конституцію.",
                 link: "http://znohistory.ed-era.com/m2/l10",
                 imgLink: "https://static.tildacdn.com/tild6532-6636-4366-a233-343361373332/photo.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953319"
             },
             { 
                 number: "Лекція 11",
@@ -122,7 +122,7 @@ const modules = [
                 description: "Історія про реформи ліквідацію козацтва, масштабні повтання та три поділи Речі Постополитої.",
                 link: "http://znohistory.ed-era.com/m2/l11",
                 imgLink: "https://static.tildacdn.com/tild3838-3236-4137-a437-323664373832/12.png",
-                audioLink:""
+                audioLink:"https://fex.net/load/526071777969/1323953375"
             }
         ],
         numberOfLections: 6,
@@ -154,7 +154,7 @@ const modules = [
             { 
                 number: "Лекція 15",
                 fullname: "Наддніпрянська Україна в другій половині XIX ст.",
-                description: "-",
+                description: "Історія про реформи Олександра ІІ, індустріалізацію та заборону української мови",
                 link: "http://znohistory.ed-era.com/m3/l15",
                 imgLink: "https://static.tildacdn.com/tild6165-6536-4663-a339-653537636264/_15.png",
                 audioLink:"https://fex.net/load/415830496302/1318278850"
@@ -162,7 +162,7 @@ const modules = [
             { 
                 number: "Лекція 16",
                 fullname: "Західноукраїнські землі у складі Австро-Угорської імперії в другій половині XIX ст.",
-                description: "-",
+                description: "Історія про український національний рух, діяльність інтелігенції та політичні партії",
                 link: "http://znohistory.ed-era.com/m3/l16",
                 imgLink: "https://static.tildacdn.com/tild3131-3363-4361-a539-326662313462/photo.png",
                 audioLink:"https://fex.net/load/415830496302/1318278887"
@@ -170,14 +170,14 @@ const modules = [
             { 
                 number: "Лекція 17",
                 fullname: "Культура України в другій половині XIX - на початку XX ст.",
-                description: "-",
+                description: "Історія української культури про театр та музику, реалізм і модернізм",
                 link: "http://znohistory.ed-era.com/m3/l17",
                 imgLink: "https://static.tildacdn.com/tild6434-6461-4265-b932-623234633761/Lecturre17.png",
                 audioLink:"https://fex.net/load/415830496302/1318278907"
             }
         ],
         numberOfLections: 5,
-        numberOfPublished: 2
+        numberOfPublished: 5
     }
 ];
 
@@ -217,6 +217,16 @@ const modulesMenu = Telegraf.Extra
         else
             return ctx.replyWithHTML(getModuleInfoHTML(ctx.match[1] - 1), getLectionsMenu(ctx.match[1]));
     })
+    
+    function getPodcastByLectionNumber(number){
+        if(number < 6)
+            return modules[1].lections[number-1].audioLink;
+        else if(number < 12)
+            return modules[1].lections[number-6].audioLink;
+        else {
+            return modules[2].lections[number-12].audioLink;
+        }
+    }
 
     bot.hears(/\Лекція (\d+)/, (ctx) => {
         Actions.add({
@@ -224,20 +234,11 @@ const modulesMenu = Telegraf.Extra
             message: ctx.message.text
         });
 
-        let songsArr = [
-            "https://fex.net/load/888840093332/1309398491",
-            "https://fex.net/load/888840093332/1309398527",
-            "https://fex.net/load/888840093332/1309398576",
-            "https://fex.net/load/888840093332/1309398596",
-            "https://fex.net/load/888840093332/1309398622",
-            "https://fex.net/load/888840093332/1309398652",
-            "https://fex.net/load/888840093332/1309398709"
-        ];
-
+        console.log("CUNTTT " + ctx.match[1])
         if(ctx.match[1] < 1 || ctx.match[1] > publishedLections)
             return ctx.reply("Такої лекції не існує або вона ще не була опублікована 😔", modulesMenu);
         else
-            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx.replyWithAudio(songsArr[Math.floor(Math.random() * 6)]));
+            return ctx.replyWithHTML(getLectionInfoHTML(ctx.match[1]), ctx.replyWithAudio(getPodcastByLectionNumber(ctx.match[1])));
     })
 
     bot.hears('⬅️ Назад', (ctx) => {
