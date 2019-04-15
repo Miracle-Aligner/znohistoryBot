@@ -3,7 +3,7 @@
 let fs = require('fs-promise');
 let mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://dbuser1:dbuser1dbuser1@ds163825.mlab.com:63825/znohistory_bot', {useNewUrlParser: true});
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true});
 
 let  mongoosePaginate = require('mongoose-paginate');
 
