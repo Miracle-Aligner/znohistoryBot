@@ -4,7 +4,7 @@ A telegram bot for [ZNO History](https://znohistory.ed-era.com/) project.
 
 Works in a form of an aggregator for project's articles and podcasts.
 
-Can be accesed at [@ederahistoryBot](t.me/ederahistoryBot) 
+Can be accesed at [@ederahistoryBot](https://t.me/ederahistoryBot) 
 
 
 
